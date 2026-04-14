@@ -2,30 +2,28 @@
 interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
 }
 
-const { title, description = "Développeur Astro & Performance Web. Je bâtis les sites les plus performants du marché. Interfaces haute couture, score Lighthouse 100/100 et SEO sémantique." } = Astro.props;
+const { 
+  title, 
+  description = "Développeur Astro & Performance Web. Je bâtis les sites les plus performants du marché. Interfaces haute couture, score Lighthouse 100/100 et SEO sémantique.",
+  image,
+  type
+} = Astro.props;
+
 import { ClientRouter } from 'astro:transitions';
 import Navigation from './Navigation.astro';
+import SEO from './SEO.astro';
 import '../styles/global.css';
 ---
 
 <!doctype html>
 <html lang="fr">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="theme-color" content="#0f1115" />
+    <SEO {title} {description} {image} {type} />
     <ClientRouter />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
