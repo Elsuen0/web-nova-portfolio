@@ -1,0 +1,84 @@
+---
+import Layout from '../../components/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { services } from '../../data/services';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+
+export async function getStaticPaths() {
+  return services.map((service) => ({
+    params: { slug: service.slug },
+    props: { service },
+  }));
+}
+
+const { service } = Astro.props;
+const Icon = service.Icon;
+---
+
+<Layout title={`${service.title} | Web Nova Solutions`} description={service.description}>
+  <main class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <!-- Back button -->
+      <a href="/#services" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-fg transition-colors mb-12 group text-xs font-mono uppercase tracking-widest scroll-reveal">
+        <ArrowLeft size={14} class="transition-transform group-hover:-translate-x-1" />
+        Retour aux services
+      </a>
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mb-16 scroll-reveal">
+        <div class="w-16 h-16 flex items-center justify-center rounded-2xl bg-brand-card border border-white/10 text-brand-fg shrink-0">
+          <Icon size={32} strokeWidth={1.5} />
+        </div>
+        <div>
+          <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Expertise Technique</span>
+          <h1 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-2 leading-tight uppercase tracking-tight">
+            {service.title}
+          </h1>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 scroll-reveal">
+        <div class="md:col-span-2 space-y-8">
+          <div class="prose prose-invert max-w-none">
+            <p class="text-xl text-brand-fg font-light leading-relaxed">
+              {service.detailedDescription}
+            </p>
+          </div>
+
+          <div class="h-px bg-white/5 w-full"></div>
+
+          <div class="space-y-6">
+            <h2 class="text-lg font-heading font-bold text-brand-fg uppercase tracking-widest">Pourquoi nous choisir ?</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {service.benefits.map((benefit) => (
+                <div class="flex items-start gap-3 p-4 rounded-xl bg-brand-card/50 border border-white/5">
+                  <CheckCircle2 size={18} class="text-brand-fg shrink-0 mt-0.5" />
+                  <span class="text-sm text-brand-muted font-light leading-snug">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Contact -->
+        <div class="space-y-6">
+          <div class="p-8 rounded-2xl bg-brand-card border border-white/10 sticky top-32">
+            <h3 class="text-base font-bold text-brand-fg mb-4 uppercase tracking-tight">Prêt à propulser votre projet ?</h3>
+            <p class="text-sm text-brand-muted font-light mb-8 leading-relaxed">
+              Discutons de vos besoins spécifiques et voyons comment nous pouvons transformer votre vision en réalité.
+            </p>
+            <a href="mailto:contact@webnovasolutions.fr" class="block w-full py-4 bg-brand-fg text-brand-bg rounded-xl font-bold text-sm text-center hover:scale-[1.02] active:scale-[0.98] transition-transform">
+              Démarrer maintenant
+            </a>
+            <p class="text-[10px] text-brand-muted/50 text-center mt-4 font-mono uppercase tracking-widest">
+              Réponse sous 24h ouvrées
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

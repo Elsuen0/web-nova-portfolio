@@ -1,0 +1,68 @@
+---
+import * as Lucide from 'lucide-react';
+const { Github, Twitter, Linkedin } = Lucide;
+---
+
+<footer class="bg-brand-card border-t border-white/8 pt-24 pb-12 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+      
+      <!-- Brand + CTA -->
+      <div class="md:col-span-2 space-y-8">
+        <div class="space-y-3">
+          <p class="text-[10px] font-mono uppercase tracking-[0.2em] text-brand-muted">Web Nova Solutions</p>
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-fg tracking-tight leading-[1.1] uppercase">
+            Prêts à battre vos concurrents<br/>
+            <span class="text-brand-muted">sur la performance ?</span>
+          </h2>
+        </div>
+        <a href="mailto:contact@webnovasolutions.fr"
+           class="inline-block text-brand-fg/70 hover:text-brand-fg transition-colors border-b border-white/15 hover:border-white/40 pb-1 font-light text-lg">
+          contact@webnovasolutions.fr
+        </a>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-muted/50 mb-8">Navigation</h4>
+        <ul class="space-y-4 text-brand-muted font-light text-sm">
+          <li><a href="#" class="hover:text-brand-fg transition-colors">Accueil</a></li>
+          <li><a href="#services" class="hover:text-brand-fg transition-colors">Services</a></li>
+          <li><a href="#projets" class="hover:text-brand-fg transition-colors">Réalisations</a></li>
+          <li><a href="#contact" class="hover:text-brand-fg transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Socials -->
+      <div>
+        <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-muted/50 mb-8">Réseaux</h4>
+        <ul class="space-y-4 text-brand-muted font-light text-sm">
+          <li>
+            <a href="#" class="flex items-center gap-2.5 hover:text-brand-fg transition-colors">
+              <Linkedin size={14} /> LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-2.5 hover:text-brand-fg transition-colors">
+              <Twitter size={14} /> Twitter / X
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center gap-2.5 hover:text-brand-fg transition-colors">
+              <Github size={14} /> GitHub
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-10 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-brand-muted/40">
+      <p>© 2026 Web Nova Solutions. Tous droits réservés.</p>
+      <div class="flex gap-8">
+        <a href="#" class="hover:text-brand-muted transition-colors">Mentions légales</a>
+        <a href="#" class="hover:text-brand-muted transition-colors">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>

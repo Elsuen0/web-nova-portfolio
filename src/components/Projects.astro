@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+
+const projects = [
+  {
+    title: "Un Jour Une Promesse",
+    subtitle: "Signature Digitale",
+    domain: "unjourunepromesse.fr",
+    category: "Architecture Web & Performance",
+    description: "Création intégrale d'un univers web sur-mesure. Une interface épurée et performante qui transforme chaque visite en une immersion poétique.",
+    link: "https://unjourunepromesse.fr",
+  },
+  {
+    title: "De Ambre à Zen",
+    subtitle: "Sérénité Digitale",
+    domain: "deambreazen.fr",
+    category: "Expérience Utilisateur & Design",
+    description: "Création d'un espace web dédié au ressourcement. Une architecture fluide et un design épuré pour retranscrire l'apaisement du soin.",
+    link: "https://deambreazen.fr",
+  },
+  {
+    title: "Activ' Transport",
+    subtitle: "Solution Logistique",
+    domain: "activ-transport.fr",
+    category: "Développement Web & Stratégie B2B",
+    description: "Refonte d'une présence digitale orientée service. Une structure claire et robuste pour valoriser la réactivité d'un acteur majeur du transport.",
+    link: "https://activ-transport.fr",
+  }
+];
+---
+
+<section id="projets" class="py-28 px-6 max-w-7xl mx-auto">
+  <!-- Section header -->
+  <div class="flex flex-col md:flex-row justify-between items-end gap-12 mb-20 scroll-reveal">
+    <div class="max-w-2xl">
+      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Sélection</span>
+      <h2 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
+        Réalisations &<br/>
+        <span class="text-brand-muted">impact digital.</span>
+      </h2>
+    </div>
+    <p class="max-w-xs text-brand-muted font-light leading-relaxed">
+      Une sélection de projets où la performance technique rencontre l'excellence esthétique.
+    </p>
+  </div>
+
+  <!-- Projects dynamic list -->
+  <div class="space-y-4">
+    {projects.map((project, index) => (
+      <a href={project.link} target="_blank" rel="noopener noreferrer" 
+         class="group block relative p-8 md:p-12 rounded-3xl bg-brand-card border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden scroll-reveal"
+         style={`transition-delay: ${index * 100}ms`}>
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8 relative z-10">
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] font-mono text-brand-muted uppercase tracking-widest">{project.category}</span>
+              <span class="w-1 h-1 rounded-full bg-white/20"></span>
+              <span class="text-[10px] font-mono text-brand-fg uppercase tracking-widest">{project.domain}</span>
+            </div>
+            
+            <h3 class="text-3xl md:text-4xl font-heading font-bold text-brand-fg tracking-tight uppercase group-hover:translate-x-2 transition-transform duration-500">
+              {project.title} <span class="text-brand-muted font-light">— {project.subtitle}</span>
+            </h3>
+            
+            <p class="max-w-2xl text-brand-muted font-light leading-relaxed">
+              {project.description}
+            </p>
+          </div>
+
+          <div class="flex items-center gap-4 text-brand-fg font-mono text-[10px] uppercase tracking-[0.2em] group-hover:gap-6 transition-all duration-500">
+            Explorer le projet
+            <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-brand-fg group-hover:text-brand-bg transition-colors duration-500">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Subtle background glow on hover -->
+        <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+      </a>
+    ))}
+  </div>
+</section>
+

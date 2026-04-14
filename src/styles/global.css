@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-bg: #0f1115;
+  --color-brand-fg: #F9F9F8;
+  --color-brand-muted: #8B949E;
+  --color-brand-accent: #ffffff;
+  --color-brand-card: #161921;
+  
+  --font-heading: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-brand-bg text-brand-fg;
+  }
+  
+  body {
+    @apply font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, .font-heading {
+    @apply font-heading font-medium tracking-tight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-brand-card/50 backdrop-blur-md border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-fg to-brand-muted;
+  }
+}
+
+/* Animations */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Scroll Reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
