@@ -56,20 +56,35 @@
 <!-- Mobile Menu Drawer -->
 <div
   id="mobile-menu"
-  class="md:hidden fixed inset-0 w-full h-full z-60 flex-col hidden bg-[#0f1115]"
+  class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-0 transition-opacity duration-300"
 >
+  <!-- Background with blur and solid color -->
+  <div class="absolute inset-0 bg-[#0f1115]/95 backdrop-blur-xl w-full h-full"></div>
+
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
 
-  <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12 overflow-y-auto">
+  <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12 overflow-y-auto drawer-content">
     <!-- Links -->
-    <nav class="flex flex-col gap-8">
-      <a href="/#services" class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg">Services</a>
-      <a href="/#projets" class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg">Réalisations</a>
-      <a href="/#avis" class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg">Avis</a>
-      <a href="/#contact" class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg">Contact</a>
+    <nav class="flex flex-col gap-6">
+      {
+        [
+          { label: "Services", href: "/#services" },
+          { label: "Réalisations", href: "/#projets" },
+          { label: "Avis", href: "/#avis" },
+          { label: "Contact", href: "/#contact" },
+        ].map((item, i) => (
+          <a
+            href={item.href}
+            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-colors"
+            style={`animation-delay: ${0.1 + i * 0.1}s`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
 
-      <div class="mt-4">
+      <div class="mt-4 mobile-link" style="animation-delay: 0.5s">
         <a
           href="mailto:contact@webnovasolutions.fr"
           class="inline-flex px-8 py-4 bg-brand-fg text-brand-bg rounded-full text-xs font-mono uppercase tracking-widest font-bold items-center gap-2"
@@ -80,15 +95,15 @@
     </nav>
 
     <!-- Menu Footer -->
-    <div class="mt-auto pt-12 border-t border-white/5">
+    <div class="mt-auto pt-12 border-t border-white/5 mobile-link" style="animation-delay: 0.6s">
       <div class="flex flex-col gap-8">
         <div>
           <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4">
             Suivez l'aventure
           </p>
           <div class="flex gap-6 text-brand-fg/60 text-[11px] font-mono uppercase tracking-widest">
-            <a href="https://www.linkedin.com/in/lucas-capart/" class="hover:text-brand-fg">LinkedIn</a>
-            <a href="https://github.com/Elsuen0" class="hover:text-brand-fg">GitHub</a>
+            <a href="https://www.linkedin.com/in/lucas-capart/" class="hover:text-brand-fg transition-colors">LinkedIn</a>
+            <a href="https://github.com/Elsuen0" class="hover:text-brand-fg transition-colors">GitHub</a>
           </div>
         </div>
 
@@ -117,18 +132,26 @@
     if (mobileMenu && spans) {
       if (isOpen) {
         mobileMenu.classList.remove("hidden");
-        mobileMenu.classList.add("flex");
+        // Force Reflow
+        void mobileMenu.offsetWidth;
+        mobileMenu.classList.add("flex", "opacity-100", "is-open");
       } else {
-        mobileMenu.classList.remove("flex");
-        mobileMenu.classList.add("hidden");
+        mobileMenu.classList.remove("is-open", "opacity-100");
+        setTimeout(() => {
+          if (!isOpen) mobileMenu.classList.add("hidden");
+        }, 400);
       }
 
       document.body.style.overflow = isOpen ? "hidden" : "";
 
-      // Animate hamburger (kept simple rotate)
-      spans[0].style.transform = isOpen ? "rotate(45deg) translate(2px, -1px)" : "";
+      // Animate hamburger
+      spans[0].style.transform = isOpen
+        ? "rotate(45deg) translate(2px, -1px)"
+        : "";
       spans[1].style.opacity = isOpen ? "0" : "1";
-      spans[2].style.transform = isOpen ? "rotate(-45deg) translate(2px, 1px)" : "";
+      spans[2].style.transform = isOpen
+        ? "rotate(-45deg) translate(2px, 1px)"
+        : "";
     }
   };
 
@@ -148,5 +171,39 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+
+  /* Elite UX Animations */
+  #mobile-menu {
+    clip-path: circle(0% at calc(100% - 40px) 40px);
+    transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+    will-change: clip-path, opacity;
+  }
+
+  #mobile-menu.is-open {
+    clip-path: circle(150% at calc(100% - 40px) 40px);
+    opacity: 1;
+  }
+
+  .mobile-link {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+    will-change: transform, opacity;
+  }
+
+  #mobile-menu.is-open .mobile-link {
+    animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px) translateZ(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) translateZ(0);
+    }
+  }
 </style>
+
 
