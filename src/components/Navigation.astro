@@ -40,14 +40,14 @@
     class="md:hidden relative z-50 p-2 text-brand-fg transition-colors"
     aria-label="Menu"
   >
-    <div class="w-6 h-5 flex flex-col justify-between overflow-hidden">
+    <div class="w-6 h-5 flex flex-col justify-between overflow-hidden pointer-events-none">
       <span
-        class="w-full h-0.5 bg-current transition-transform duration-300 origin-left"
+        class="w-full h-0.5 bg-current transition-all duration-300 origin-left"
       ></span>
-      <span class="w-full h-0.5 bg-current transition-opacity duration-300"
+      <span class="w-full h-0.5 bg-current transition-all duration-300"
       ></span>
       <span
-        class="w-full h-0.5 bg-current transition-transform duration-300 origin-left"
+        class="w-full h-0.5 bg-current transition-all duration-300 origin-left"
       ></span>
     </div>
   </button>
@@ -161,12 +161,16 @@
 
       // Animate hamburger
       spans[0].style.transform = isOpen
-        ? "rotate(45deg) translate(2px, -1px)"
-        : "";
+        ? "rotate(45deg) translate(2px, -1px) translateZ(0)"
+        : "translateZ(0)";
+      
+      // Middle bar: use both scale and opacity for clean disappearance on Chrome Mobile
       spans[1].style.opacity = isOpen ? "0" : "1";
+      spans[1].style.transform = isOpen ? "scaleX(0) translateZ(0)" : "scaleX(1) translateZ(0)";
+      
       spans[2].style.transform = isOpen
-        ? "rotate(-45deg) translate(2px, 1px)"
-        : "";
+        ? "rotate(-45deg) translate(2px, 1px) translateZ(0)"
+        : "translateZ(0)";
     }
   };
 
@@ -196,6 +200,8 @@
     /* Layer promotion to fix top-of-page freeze */
     transform: translateZ(0);
     backface-visibility: hidden;
+    /* Extra rendering hint */
+    contain: paint;
   }
 
   #mobile-menu.is-open {
