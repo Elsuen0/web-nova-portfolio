@@ -18,22 +18,22 @@ import Footer from '../components/Footer.astro';
     <Testimonials />
 
     <!-- CTA Section -->
-    <section id="contact" class="py-32 px-6 scroll-reveal">
-      <div class="max-w-4xl mx-auto rounded-3xl bg-brand-card border border-white/10 p-12 md:p-24 text-center relative overflow-hidden">
+    <section id="contact" class="py-20 md:py-32 px-6 scroll-reveal">
+      <div class="max-w-4xl mx-auto rounded-3xl bg-brand-card border border-white/10 p-8 md:p-24 text-center relative overflow-hidden">
         <div class="absolute inset-0 grid-bg opacity-20 rounded-3xl"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-40 bg-white/5 rounded-full blur-3xl"></div>
 
         <span class="relative text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Passons à l'action</span>
-        <h2 class="relative text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-6 mb-8 leading-[1.1] tracking-tight uppercase">
+        <h2 class="relative text-3xl md:text-6xl font-heading font-bold text-brand-fg mt-6 mb-8 leading-[1.2] md:leading-[1.1] tracking-tight uppercase">
           Votre site le plus<br/>
           <span class="text-brand-muted">rapide vous attend.</span>
         </h2>
-        <p class="relative max-w-xl mx-auto text-brand-muted font-light mb-12 leading-relaxed">
+        <p class="relative max-w-xl mx-auto text-brand-muted font-light mb-12 leading-relaxed text-sm md:text-base">
           Un échange de 30 minutes pour cerner votre projet. Aucun engagement, juste de la valeur.
         </p>
         <a href="mailto:contact@webnovasolutions.fr"
            id="cta-main-email"
-           class="relative inline-flex items-center gap-2 px-12 py-5 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform">
+           class="relative inline-flex items-center gap-2 px-8 md:px-12 py-4 md:py-5 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform w-full sm:w-auto justify-center">
           Réserver un appel gratuit
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -41,6 +41,7 @@ import Footer from '../components/Footer.astro';
         </a>
       </div>
     </section>
+
   </main>
 
   <Footer />

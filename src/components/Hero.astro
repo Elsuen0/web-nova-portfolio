@@ -1,64 +1,65 @@
 ---
 ---
 
-<section class="relative min-h-screen flex flex-col items-center justify-center px-6 py-32 text-center overflow-hidden">
+<section class="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
 
   <!-- Grid pattern overlay -->
   <div class="absolute inset-0 -z-10 grid-bg opacity-30"></div>
 
   <!-- Glow blobs -->
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/5 rounded-full blur-[120px] -z-10"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/3 rounded-full blur-[80px] -z-10"></div>
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] bg-white/5 rounded-full blur-[120px] -z-10"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-64 md:h-64 bg-white/3 rounded-full blur-[80px] -z-10"></div>
 
-  <div class="max-w-5xl mx-auto space-y-8 hero-appear">
+  <div class="max-w-5xl mx-auto space-y-6 md:space-y-8 hero-appear">
     <!-- Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[10px] font-mono uppercase tracking-[0.2em] text-brand-muted mx-auto">
+    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em] text-brand-muted mx-auto">
       <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block"></span>
       Disponible pour de nouveaux projets
     </div>
 
     <!-- Headline -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-brand-fg leading-[1] tracking-tight uppercase">
-      Développeur Astro<br/>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-brand-fg leading-[1.1] md:leading-[1] tracking-tight uppercase">
+      Développeur Astro<br class="hidden sm:block"/>
       <span class="text-brand-muted">&amp; Performance Web.</span>
     </h1>
 
     <!-- Subtitle deck -->
-    <p class="text-lg md:text-xl text-brand-muted font-light leading-relaxed max-w-2xl mx-auto">
+    <p class="text-base md:text-xl text-brand-muted font-light leading-relaxed max-w-2xl mx-auto">
       Je bâtis les sites les plus performants du marché.
     </p>
 
     <!-- Value prop pills -->
-    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+    <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 pt-2">
       {[
         { label: "Lighthouse 100/100", emoji: "⚡" },
         { label: "SEO Sémantique", emoji: "🎯" },
         { label: "Interfaces Haute Couture", emoji: "✦" },
       ].map(({ label, emoji }) => (
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-brand-fg uppercase tracking-wider">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white/5 border border-white/10 text-[10px] md:text-xs font-mono text-brand-fg uppercase tracking-wider">
           <span class="opacity-70">{emoji}</span> {label}
         </span>
       ))}
     </div>
 
-    <p class="text-brand-muted/70 font-light text-base max-w-xl mx-auto border-t border-white/5 pt-8">
+    <p class="text-brand-muted/70 font-light text-sm md:text-base max-w-xl mx-auto border-t border-white/5 pt-6 md:pt-8 italic">
       «&nbsp;Interfaces haute couture, score Lighthouse 100/100 et SEO sémantique.<br class="hidden md:block"/>
       Ne laissez plus la lenteur freiner votre croissance.&nbsp;»
     </p>
 
     <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 uppercase tracking-widest text-[11px] font-mono">
-      <a href="#contact" id="hero-cta-primary" class="group px-8 py-4 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 uppercase tracking-widest text-[11px] font-mono w-full sm:w-auto">
+      <a href="#contact" id="hero-cta-primary" class="group w-full sm:w-auto px-8 py-4 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
         Démarrer un projet
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </a>
-      <a href="#projets" id="hero-cta-secondary" class="px-8 py-4 border border-white/15 text-brand-fg/70 hover:text-brand-fg rounded-full font-medium text-sm transition-all hover:border-white/30">
+      <a href="#projets" id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 border border-white/15 text-brand-fg/70 hover:text-brand-fg rounded-full font-medium text-sm transition-all hover:border-white/30 text-center">
         Voir les réalisations
       </a>
     </div>
   </div>
+
 
   <!-- Scroll indicator -->
   <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-muted/40 text-xs tracking-widest uppercase animate-bounce-slow">
