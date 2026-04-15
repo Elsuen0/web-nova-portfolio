@@ -1,98 +1,159 @@
 ---
+
 ---
 
-<section class="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-center px-6 py-20 text-center overflow-hidden">
-
+<section
+  class="relative min-h-screen min-h-[100dvh] flex flex-col items-center justify-start px-6 pt-16 md:pt-44 pb-20 text-center overflow-hidden"
+>
   <!-- Grid pattern overlay -->
   <div class="absolute inset-0 -z-10 grid-bg opacity-30"></div>
 
   <!-- Glow blobs -->
-  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] bg-white/5 rounded-full blur-[120px] -z-10"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-64 md:h-64 bg-white/3 rounded-full blur-[80px] -z-10"></div>
+  <div
+    class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[300px] bg-white/5 rounded-full blur-[120px] -z-10"
+  >
+  </div>
+  <div
+    class="absolute bottom-1/4 right-1/4 w-48 h-48 md:w-64 md:h-64 bg-white/3 rounded-full blur-[80px] -z-10"
+  >
+  </div>
 
-  <div class="max-w-5xl mx-auto space-y-6 md:space-y-8 hero-appear">
+  <div class="max-w-5xl mx-auto space-y-4 md:space-y-6 hero-appear">
     <!-- Badge -->
-    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em] text-brand-muted mx-auto">
-      <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse inline-block"></span>
+    <div
+      class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[9px] md:text-[10px] font-mono uppercase tracking-[0.2em] text-brand-muted mx-auto mb-2"
+    >
+      <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
       Disponible pour de nouveaux projets
     </div>
 
     <!-- Headline -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-brand-fg leading-[1.1] md:leading-[1] tracking-tight uppercase">
-      Développeur Astro<br class="hidden sm:block"/>
+    <h1
+      class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-bold text-brand-fg leading-[1.1] md:leading-[1] tracking-tight uppercase"
+    >
+      Développeur Astro<br class="hidden sm:block" />
       <span class="text-brand-muted">&amp; Performance Web.</span>
     </h1>
 
     <!-- Subtitle deck -->
-    <p class="text-base md:text-xl text-brand-muted font-light leading-relaxed max-w-2xl mx-auto">
+    <p
+      class="text-base md:text-xl text-brand-muted font-light leading-relaxed max-w-2xl mx-auto"
+    >
       Je bâtis les sites les plus performants du marché.
     </p>
 
     <!-- Value prop pills -->
     <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 pt-2">
-      {[
-        { label: "Lighthouse 100/100", emoji: "⚡" },
-        { label: "SEO Sémantique", emoji: "🎯" },
-        { label: "Interfaces Haute Couture", emoji: "✦" },
-      ].map(({ label, emoji }) => (
-        <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white/5 border border-white/10 text-[10px] md:text-xs font-mono text-brand-fg uppercase tracking-wider">
-          <span class="opacity-70">{emoji}</span> {label}
-        </span>
-      ))}
+      {
+        [
+          { label: "Lighthouse 100/100", emoji: "⚡" },
+          { label: "SEO Sémantique", emoji: "🎯" },
+          { label: "Interfaces Haute Couture", emoji: "✦" },
+        ].map(({ label, emoji }) => (
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white/5 border border-white/10 text-[10px] md:text-xs font-mono text-brand-fg uppercase tracking-wider">
+            <span class="opacity-70">{emoji}</span> {label}
+          </span>
+        ))
+      }
     </div>
 
-    <p class="text-brand-muted/70 font-light text-sm md:text-base max-w-xl mx-auto border-t border-white/5 pt-6 md:pt-8 italic">
-      «&nbsp;Interfaces haute couture, score Lighthouse 100/100 et SEO sémantique.<br class="hidden md:block"/>
+    <!-- Citation / Tagline -->
+    <p
+      class="text-brand-muted/70 font-light text-xs md:text-sm max-w-xl mx-auto border-t border-white/5 pt-6 md:pt-8 italic"
+    >
+      «&nbsp;Interfaces haute couture, score Lighthouse 100/100 et SEO
+      sémantique.<br class="hidden md:block" />
       Ne laissez plus la lenteur freiner votre croissance.&nbsp;»
     </p>
 
     <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 uppercase tracking-widest text-[11px] font-mono w-full sm:w-auto">
-      <a href="#contact" id="hero-cta-primary" class="group w-full sm:w-auto px-8 py-4 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+    <div
+      class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 uppercase tracking-widest text-[11px] font-mono w-full sm:w-auto"
+    >
+      <a
+        href="#contact"
+        id="hero-cta-primary"
+        class="group w-full sm:w-auto px-10 py-4 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+      >
         Démarrer un projet
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-4 w-4 transition-transform group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
-      <a href="#projets" id="hero-cta-secondary" class="w-full sm:w-auto px-8 py-4 border border-white/15 text-brand-fg/70 hover:text-brand-fg rounded-full font-medium text-sm transition-all hover:border-white/30 text-center">
+      <a
+        href="#projets"
+        id="hero-cta-secondary"
+        class="w-full sm:w-auto px-10 py-4 border border-white/15 text-brand-fg/70 hover:text-brand-fg rounded-full font-medium text-sm transition-all hover:border-white/30 text-center"
+      >
         Voir les réalisations
       </a>
     </div>
   </div>
 
-
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-brand-muted/40 text-xs tracking-widest uppercase animate-bounce-slow">
-    <span>Scroll</span>
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
-    </svg>
+  <!-- Premium Scroll Indicator -->
+  <div
+    class="absolute bottom-8 left-0 right-0 flex flex-col items-center gap-3"
+  >
+    <div
+      class="w-[20px] h-[32px] rounded-full border border-white/20 flex justify-center pt-2"
+    >
+      <div class="w-1 h-2 bg-brand-fg/40 rounded-full animate-scroll-dot"></div>
+    </div>
+    <span class="text-[9px] font-mono uppercase tracking-[0.3em] text-white/20"
+      >Scroll</span
+    >
   </div>
 </section>
 
 <style>
   .grid-bg {
     background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 
   @keyframes hero-appear {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(24px) translateZ(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) translateZ(0);
+    }
   }
 
   .hero-appear {
-    animation: hero-appear 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: hero-appear 1.2s cubic-bezier(0.19, 1, 0.22, 1) both;
   }
 
-  @keyframes bounce-slow {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50%       { transform: translateX(-50%) translateY(6px); }
+  @keyframes scroll-dot {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(6px);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
-  .animate-bounce-slow {
-    animation: bounce-slow 2.5s ease-in-out infinite;
+  .animate-scroll-dot {
+    animation: scroll-dot 2s ease-in-out infinite;
   }
 </style>
