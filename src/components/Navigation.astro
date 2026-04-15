@@ -1,17 +1,240 @@
 ---
+
 ---
-<nav class="fixed top-0 inset-x-0 z-50 px-6 py-5 flex items-center justify-between border-b border-white/5 bg-brand-bg/80 backdrop-blur-md">
-  <a href="/" id="nav-logo" class="text-brand-fg font-heading font-bold text-lg tracking-tight uppercase">
+
+<nav
+  class="fixed top-0 inset-x-0 z-50 px-6 py-5 flex items-center justify-between border-b border-white/5 bg-brand-bg/80 backdrop-blur-md"
+>
+  <a
+    href="/"
+    id="nav-logo"
+    class="text-brand-fg font-heading font-bold text-lg tracking-tight uppercase z-50"
+  >
     Web Nova <span class="text-brand-muted font-light">Solutions</span>
   </a>
-  <div class="hidden md:flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-brand-muted">
-    <a href="/#services" class="hover:text-brand-fg transition-colors">Services</a>
-    <a href="/#projets" class="hover:text-brand-fg transition-colors">Réalisations</a>
+
+  <!-- Desktop Menu -->
+  <div
+    class="hidden md:flex items-center gap-8 text-[11px] font-mono uppercase tracking-widest text-brand-muted"
+  >
+    <a href="/#services" class="hover:text-brand-fg transition-colors"
+      >Services</a
+    >
+    <a href="/#projets" class="hover:text-brand-fg transition-colors"
+      >Réalisations</a
+    >
     <a href="/#avis" class="hover:text-brand-fg transition-colors">Avis</a>
-    <a href="/#contact" class="hover:text-brand-fg transition-colors">Contact</a>
-    <a href="mailto:contact@webnovasolutions.fr"
-       class="ml-4 px-6 py-2.5 bg-brand-fg text-brand-bg rounded-full font-bold hover:scale-105 transition-transform">
+    <a href="/#contact" class="hover:text-brand-fg transition-colors">Contact</a
+    >
+    <a
+      href="mailto:contact@webnovasolutions.fr"
+      class="ml-4 px-6 py-2.5 bg-brand-fg text-brand-bg rounded-full font-bold hover:scale-105 transition-transform"
+    >
       Parlons-en →
     </a>
   </div>
+
+  <!-- Mobile Menu Button -->
+  <button
+    id="menu-toggle"
+    class="md:hidden relative z-50 p-2 text-brand-fg transition-colors"
+    aria-label="Menu"
+  >
+    <div class="w-6 h-5 flex flex-col justify-between overflow-hidden">
+      <span
+        class="w-full h-0.5 bg-current transition-transform duration-300 origin-left"
+      ></span>
+      <span class="w-full h-0.5 bg-current transition-opacity duration-300"
+      ></span>
+      <span
+        class="w-full h-0.5 bg-current transition-transform duration-300 origin-left"
+      ></span>
+    </div>
+  </button>
 </nav>
+
+<!-- Mobile Menu Drawer (Moved outside <nav> flex container) -->
+<div
+  id="mobile-menu"
+  class="md:hidden fixed inset-0 w-full h-full z-40 flex flex-col opacity-0 pointer-events-none invisible transition-all duration-300 ease-in-out"
+>
+  <!-- Background with solid color -->
+  <div class="absolute inset-0 bg-[#0f1115] w-full h-full shadow-2xl"></div>
+
+  <!-- Texture overlay -->
+  <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
+
+  <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12">
+    <!-- Links Staggered -->
+    <nav class="flex flex-col gap-6">
+      {
+        [
+          { label: "Services", href: "/#services" },
+          { label: "Réalisations", href: "/#projets" },
+          { label: "Avis", href: "/#avis" },
+          { label: "Contact", href: "/#contact" },
+        ].map((item, i) => (
+          <a
+            href={item.href}
+            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-all duration-500 translate-y-8 opacity-0"
+            style={`transition-delay: ${100 + i * 100}ms`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+
+      <div
+        class="mt-4 translate-y-8 opacity-0 mobile-link"
+        style="transition-delay: 500ms"
+      >
+        <a
+          href="mailto:contact@webnovasolutions.fr"
+          class="inline-flex px-8 py-4 bg-brand-fg text-brand-bg rounded-full text-xs font-mono uppercase tracking-widest font-bold items-center gap-2"
+        >
+          Parlons-en
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Menu Footer -->
+    <div
+      class="mt-auto pt-12 border-t border-white/5 translate-y-8 opacity-0 mobile-link"
+      style="transition-delay: 600ms"
+    >
+      <div class="flex flex-col gap-8">
+        <div>
+          <p
+            class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4"
+          >
+            Suivez l'aventure
+          </p>
+          <div
+            class="flex gap-6 text-brand-fg/60 text-[11px] font-mono uppercase tracking-widest"
+          >
+            <a
+              href="https://www.linkedin.com/in/lucas-capart/"
+              class="hover:text-brand-fg transition-colors">LinkedIn</a
+            >
+            <a
+              href="https://github.com/Elsuen0"
+              class="hover:text-brand-fg transition-colors">GitHub</a
+            >
+          </div>
+        </div>
+
+        <div class="flex justify-between items-end">
+          <div class="space-y-1">
+            <p
+              class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]"
+            >
+              Contact
+            </p>
+            <p class="text-xs text-brand-fg font-light">
+              Amiens, France / Remote
+            </p>
+          </div>
+          <p
+            class="text-[8px] font-mono text-brand-muted uppercase tracking-[0.2em]"
+          >
+            © 2026 WEB NOVA
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+  const spans = menuToggle?.querySelectorAll("span");
+
+  let isOpen = false;
+
+  const toggleMenu = () => {
+    isOpen = !isOpen;
+    if (mobileMenu && spans) {
+      if (isOpen) {
+        mobileMenu.classList.remove(
+          "opacity-0",
+          "pointer-events-none",
+          "invisible",
+        );
+        mobileMenu.classList.add(
+          "opacity-100",
+          "pointer-events-auto",
+          "visible",
+        );
+
+        // Trigger staggered link animations
+        mobileLinks.forEach((link) => {
+          (link as HTMLElement).style.transform = "translateY(0)";
+          (link as HTMLElement).style.opacity = "1";
+        });
+      } else {
+        mobileMenu.classList.remove(
+          "opacity-100",
+          "pointer-events-auto",
+          "visible",
+        );
+        mobileMenu.classList.add(
+          "opacity-0",
+          "pointer-events-none",
+          "invisible",
+        );
+
+        // Reset animations
+        mobileLinks.forEach((link) => {
+          (link as HTMLElement).style.transform = "translateY(32px)";
+          (link as HTMLElement).style.opacity = "0";
+        });
+      }
+
+      document.body.style.overflow = isOpen ? "hidden" : "";
+
+      // Animate hamburger
+      spans[0].style.transform = isOpen
+        ? "rotate(45deg) translate(2px, -1px)"
+        : "";
+      spans[1].style.opacity = isOpen ? "0" : "1";
+      spans[2].style.transform = isOpen
+        ? "rotate(-45deg) translate(2px, 1px)"
+        : "";
+    }
+  };
+
+  menuToggle?.addEventListener("click", toggleMenu);
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (isOpen) {
+        // Delay closing slightly for better feel if needed, or close immediately
+        toggleMenu();
+      }
+    });
+  });
+</script>
+
+<style>
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+</style>
