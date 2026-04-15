@@ -64,7 +64,7 @@
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
 
-  <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12">
+  <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12 overflow-y-auto">
     <!-- Links Staggered -->
     <nav class="flex flex-col gap-6">
       {
@@ -76,7 +76,7 @@
         ].map((item, i) => (
           <a
             href={item.href}
-            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-all duration-500 translate-y-8 opacity-0"
+            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-all duration-500"
             style={`transition-delay: ${100 + i * 100}ms`}
           >
             {item.label}
@@ -85,7 +85,7 @@
       }
 
       <div
-        class="mt-4 translate-y-8 opacity-0 mobile-link"
+        class="mt-4 mobile-link"
         style="transition-delay: 500ms"
       >
         <a
@@ -112,7 +112,7 @@
 
     <!-- Menu Footer -->
     <div
-      class="mt-auto pt-12 border-t border-white/5 translate-y-8 opacity-0 mobile-link"
+      class="mt-auto pt-12 border-t border-white/5 mobile-link"
       style="transition-delay: 600ms"
     >
       <div class="flex flex-col gap-8">
@@ -170,39 +170,11 @@
     isOpen = !isOpen;
     if (mobileMenu && spans) {
       if (isOpen) {
-        mobileMenu.classList.remove(
-          "opacity-0",
-          "pointer-events-none",
-          "invisible",
-        );
-        mobileMenu.classList.add(
-          "opacity-100",
-          "pointer-events-auto",
-          "visible",
-        );
-
-        // Trigger staggered link animations
-        mobileLinks.forEach((link) => {
-          (link as HTMLElement).style.transform = "translateY(0)";
-          (link as HTMLElement).style.opacity = "1";
-        });
+        mobileMenu.classList.remove("opacity-0", "pointer-events-none", "invisible");
+        mobileMenu.classList.add("opacity-100", "pointer-events-auto", "visible", "is-open");
       } else {
-        mobileMenu.classList.remove(
-          "opacity-100",
-          "pointer-events-auto",
-          "visible",
-        );
-        mobileMenu.classList.add(
-          "opacity-0",
-          "pointer-events-none",
-          "invisible",
-        );
-
-        // Reset animations
-        mobileLinks.forEach((link) => {
-          (link as HTMLElement).style.transform = "translateY(32px)";
-          (link as HTMLElement).style.opacity = "0";
-        });
+        mobileMenu.classList.remove("opacity-100", "pointer-events-auto", "visible", "is-open");
+        mobileMenu.classList.add("opacity-0", "pointer-events-none", "invisible");
       }
 
       document.body.style.overflow = isOpen ? "hidden" : "";
@@ -222,10 +194,7 @@
 
   mobileLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      if (isOpen) {
-        // Delay closing slightly for better feel if needed, or close immediately
-        toggleMenu();
-      }
+      if (isOpen) toggleMenu();
     });
   });
 </script>
@@ -237,4 +206,18 @@
       linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 40px 40px;
   }
+
+  /* Fixed for iOS Safari */
+  .mobile-link {
+    transform: translate3d(0, 20px, 0);
+    opacity: 0;
+    will-change: transform, opacity;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-out;
+  }
+
+  #mobile-menu.is-open .mobile-link {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
 </style>
+
