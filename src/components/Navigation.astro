@@ -3,12 +3,13 @@
 ---
 
 <nav
-  class="fixed top-0 inset-x-0 z-[70] px-6 py-5 flex items-center justify-between border-b border-white/5 bg-brand-bg/80 backdrop-blur-md"
+  id="main-nav"
+  class="fixed top-0 inset-x-0 z-[70] px-6 py-5 flex items-center justify-between border-b border-white/5 bg-brand-bg/80 backdrop-blur-md transition-colors duration-300"
 >
   <a
     href="/"
     id="nav-logo"
-    class="text-brand-fg font-heading font-bold text-lg tracking-tight uppercase z-50"
+    class="text-brand-fg font-heading font-bold text-lg tracking-tight uppercase z-50 translate-z-0"
   >
     Web Nova <span class="text-brand-muted font-light">Solutions</span>
   </a>
@@ -37,7 +38,7 @@
   <!-- Mobile Menu Button -->
   <button
     id="menu-toggle"
-    class="md:hidden relative z-50 p-2 text-brand-fg transition-colors"
+    class="md:hidden relative z-50 p-2 text-brand-fg transition-colors translate-z-0"
     aria-label="Menu"
   >
     <div class="w-6 h-5 flex flex-col justify-between overflow-hidden pointer-events-none">
@@ -56,10 +57,10 @@
 <!-- Mobile Menu Drawer -->
 <div
   id="mobile-menu"
-  class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-0 transition-opacity duration-300"
+  class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-100"
 >
-  <!-- Solid background for performance on iOS (removes freeze) -->
-  <div class="absolute inset-0 bg-[#0f1115] w-full h-full"></div>
+  <!-- Solid background for performance on iOS -->
+  <div class="absolute inset-0 bg-[#0f1115] w-full h-full shadow-2xl"></div>
 
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
@@ -76,7 +77,7 @@
         ].map((item, i) => (
           <a
             href={item.href}
-            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-colors"
+            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-colors translate-z-0"
             style={`animation-delay: ${0.05 + i * 0.05}s`}
           >
             {item.label}
@@ -133,6 +134,7 @@
 </div>
 
 <script>
+  const mainNav = document.getElementById("main-nav");
   const menuToggle = document.getElementById("menu-toggle");
   const mobileMenu = document.getElementById("mobile-menu");
   const mobileLinks = document.querySelectorAll(".mobile-link");
@@ -142,16 +144,25 @@
 
   const toggleMenu = () => {
     isOpen = !isOpen;
-    if (mobileMenu && spans) {
+    if (mobileMenu && spans && mainNav) {
       if (isOpen) {
         mobileMenu.classList.remove("hidden");
         mobileMenu.classList.add("flex");
-        // Immediate start for transform
+        
+        // Performance: disable header blur when menu is open to fix iOS freeze
+        mainNav.classList.remove("backdrop-blur-md");
+        mainNav.classList.add("bg-brand-bg"); // Solid background
+
         requestAnimationFrame(() => {
-          mobileMenu.classList.add("opacity-100", "is-open");
+          mobileMenu.classList.add("is-open");
         });
       } else {
-        mobileMenu.classList.remove("is-open", "opacity-100");
+        mobileMenu.classList.remove("is-open");
+        
+        // Restore header blur
+        mainNav.classList.add("backdrop-blur-md");
+        mainNav.classList.remove("bg-brand-bg");
+
         setTimeout(() => {
           if (!isOpen) mobileMenu.classList.add("hidden");
         }, 400);
@@ -195,9 +206,8 @@
   #mobile-menu {
     /* Simplified clip-path origin for Safari stability */
     clip-path: circle(0% at 90% 40px);
-    transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    will-change: clip-path, opacity;
-    /* Layer promotion to fix top-of-page freeze */
+    transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: clip-path;
     transform: translateZ(0);
     backface-visibility: hidden;
     /* Extra rendering hint */
@@ -206,7 +216,6 @@
 
   #mobile-menu.is-open {
     clip-path: circle(150% at 90% 40px);
-    opacity: 1;
   }
 
   .mobile-link {
@@ -229,7 +238,13 @@
       transform: translateY(0) translate3d(0, 0, 0);
     }
   }
+
+  .translate-z-0 {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
 </style>
+
 
 
 
