@@ -77,25 +77,38 @@
           <a
             href={item.href}
             class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-colors"
-            style={`animation-delay: ${0.1 + i * 0.1}s`}
+            style={`animation-delay: ${0.05 + i * 0.05}s`}
           >
             {item.label}
           </a>
         ))
       }
 
-      <div class="mt-4 mobile-link" style="animation-delay: 0.5s">
+      <div class="mt-4 mobile-link" style="animation-delay: 0.3s">
         <a
           href="mailto:contact@webnovasolutions.fr"
           class="inline-flex px-8 py-4 bg-brand-fg text-brand-bg rounded-full text-xs font-mono uppercase tracking-widest font-bold items-center gap-2"
         >
-          Parlons-en →
+          Parlons-en
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
         </a>
       </div>
     </nav>
 
     <!-- Menu Footer -->
-    <div class="mt-auto pt-12 border-t border-white/5 mobile-link" style="animation-delay: 0.6s">
+    <div class="mt-auto pt-12 border-t border-white/5 mobile-link" style="animation-delay: 0.4s">
       <div class="flex flex-col gap-8">
         <div>
           <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4">
@@ -132,9 +145,11 @@
     if (mobileMenu && spans) {
       if (isOpen) {
         mobileMenu.classList.remove("hidden");
-        // Force Reflow
-        void mobileMenu.offsetWidth;
-        mobileMenu.classList.add("flex", "opacity-100", "is-open");
+        mobileMenu.classList.add("flex");
+        // Immediate start for transform
+        requestAnimationFrame(() => {
+          mobileMenu.classList.add("opacity-100", "is-open");
+        });
       } else {
         mobileMenu.classList.remove("is-open", "opacity-100");
         setTimeout(() => {
@@ -172,10 +187,10 @@
     background-size: 40px 40px;
   }
 
-  /* Elite UX Animations */
+  /* Snapier UX Animations */
   #mobile-menu {
     clip-path: circle(0% at calc(100% - 40px) 40px);
-    transition: clip-path 0.6s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+    transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: clip-path, opacity;
   }
 
@@ -186,18 +201,18 @@
 
   .mobile-link {
     opacity: 0;
-    transform: translateY(20px) translateZ(0);
+    transform: translateY(15px) translateZ(0);
     will-change: transform, opacity;
   }
 
   #mobile-menu.is-open .mobile-link {
-    animation: revealUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: revealUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
   @keyframes revealUp {
     from {
       opacity: 0;
-      transform: translateY(20px) translateZ(0);
+      transform: translateY(15px) translateZ(0);
     }
     to {
       opacity: 1;
@@ -205,5 +220,6 @@
     }
   }
 </style>
+
 
 
