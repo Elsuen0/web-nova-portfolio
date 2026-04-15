@@ -58,8 +58,8 @@
   id="mobile-menu"
   class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-0 transition-opacity duration-300"
 >
-  <!-- Background with blur and solid color -->
-  <div class="absolute inset-0 bg-[#0f1115]/95 backdrop-blur-xl w-full h-full"></div>
+  <!-- Solid background for performance on iOS (removes freeze) -->
+  <div class="absolute inset-0 bg-[#0f1115] w-full h-full"></div>
 
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
@@ -189,19 +189,23 @@
 
   /* Snapier UX Animations */
   #mobile-menu {
-    clip-path: circle(0% at calc(100% - 40px) 40px);
+    /* Simplified clip-path origin for Safari stability */
+    clip-path: circle(0% at 90% 40px);
     transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     will-change: clip-path, opacity;
+    /* Layer promotion to fix top-of-page freeze */
+    transform: translateZ(0);
+    backface-visibility: hidden;
   }
 
   #mobile-menu.is-open {
-    clip-path: circle(150% at calc(100% - 40px) 40px);
+    clip-path: circle(150% at 90% 40px);
     opacity: 1;
   }
 
   .mobile-link {
     opacity: 0;
-    transform: translateY(15px) translateZ(0);
+    transform: translateY(15px) translate3d(0, 0, 0);
     will-change: transform, opacity;
   }
 
@@ -212,14 +216,15 @@
   @keyframes revealUp {
     from {
       opacity: 0;
-      transform: translateY(15px) translateZ(0);
+      transform: translateY(15px) translate3d(0, 0, 0);
     }
     to {
       opacity: 1;
-      transform: translateY(0) translateZ(0);
+      transform: translateY(0) translate3d(0, 0, 0);
     }
   }
 </style>
+
 
 
 
