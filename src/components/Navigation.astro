@@ -53,19 +53,19 @@
   </button>
 </nav>
 
-<!-- Mobile Menu Drawer (Moved outside <nav> flex container) -->
+<!-- Mobile Menu Drawer -->
 <div
   id="mobile-menu"
-  class="md:hidden fixed inset-0 w-full h-full z-40 flex flex-col opacity-0 pointer-events-none invisible transition-all duration-300 ease-in-out"
+  class="md:hidden fixed inset-0 w-full h-full z-[60] flex flex-col translate-x-full transition-transform duration-500 ease-in-out"
 >
   <!-- Background with solid color -->
-  <div class="absolute inset-0 bg-[#0f1115] w-full h-full shadow-2xl"></div>
+  <div class="absolute inset-0 bg-[#0f1115] w-full h-full"></div>
 
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
 
   <div class="relative z-10 flex flex-col h-full px-8 pt-32 pb-12 overflow-y-auto">
-    <!-- Links Staggered -->
+    <!-- Links -->
     <nav class="flex flex-col gap-6">
       {
         [
@@ -76,18 +76,14 @@
         ].map((item, i) => (
           <a
             href={item.href}
-            class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-all duration-500"
-            style={`transition-delay: ${100 + i * 100}ms`}
+            class={`mobile-link link-delay-${i} text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted`}
           >
             {item.label}
           </a>
         ))
       }
 
-      <div
-        class="mt-4 mobile-link"
-        style="transition-delay: 500ms"
-      >
+      <div class="mt-4 mobile-link link-delay-4">
         <a
           href="mailto:contact@webnovasolutions.fr"
           class="inline-flex px-8 py-4 bg-brand-fg text-brand-bg rounded-full text-xs font-mono uppercase tracking-widest font-bold items-center gap-2"
@@ -111,47 +107,24 @@
     </nav>
 
     <!-- Menu Footer -->
-    <div
-      class="mt-auto pt-12 border-t border-white/5 mobile-link"
-      style="transition-delay: 600ms"
-    >
+    <div class="mt-auto pt-12 border-t border-white/5 mobile-link link-delay-5">
       <div class="flex flex-col gap-8">
         <div>
-          <p
-            class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4"
-          >
+          <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4">
             Suivez l'aventure
           </p>
-          <div
-            class="flex gap-6 text-brand-fg/60 text-[11px] font-mono uppercase tracking-widest"
-          >
-            <a
-              href="https://www.linkedin.com/in/lucas-capart/"
-              class="hover:text-brand-fg transition-colors">LinkedIn</a
-            >
-            <a
-              href="https://github.com/Elsuen0"
-              class="hover:text-brand-fg transition-colors">GitHub</a
-            >
+          <div class="flex gap-6 text-brand-fg/60 text-[11px] font-mono uppercase tracking-widest">
+            <a href="https://www.linkedin.com/in/lucas-capart/" class="hover:text-brand-fg transition-colors">LinkedIn</a>
+            <a href="https://github.com/Elsuen0" class="hover:text-brand-fg transition-colors">GitHub</a>
           </div>
         </div>
 
         <div class="flex justify-between items-end">
           <div class="space-y-1">
-            <p
-              class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]"
-            >
-              Contact
-            </p>
-            <p class="text-xs text-brand-fg font-light">
-              Amiens, France / Remote
-            </p>
+            <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]">Contact</p>
+            <p class="text-xs text-brand-fg font-light">Amiens, France / Remote</p>
           </div>
-          <p
-            class="text-[8px] font-mono text-brand-muted uppercase tracking-[0.2em]"
-          >
-            © 2026 WEB NOVA
-          </p>
+          <p class="text-[8px] font-mono text-brand-muted uppercase tracking-[0.2em]">© 2026 WEB NOVA</p>
         </div>
       </div>
     </div>
@@ -170,11 +143,11 @@
     isOpen = !isOpen;
     if (mobileMenu && spans) {
       if (isOpen) {
-        mobileMenu.classList.remove("opacity-0", "pointer-events-none", "invisible");
-        mobileMenu.classList.add("opacity-100", "pointer-events-auto", "visible", "is-open");
+        mobileMenu.style.transform = "translateX(0)";
+        mobileMenu.classList.add("is-open");
       } else {
-        mobileMenu.classList.remove("opacity-100", "pointer-events-auto", "visible", "is-open");
-        mobileMenu.classList.add("opacity-0", "pointer-events-none", "invisible");
+        mobileMenu.style.transform = "translateX(100%)";
+        mobileMenu.classList.remove("is-open");
       }
 
       document.body.style.overflow = isOpen ? "hidden" : "";
@@ -207,17 +180,30 @@
     background-size: 40px 40px;
   }
 
-  /* Fixed for iOS Safari */
+  /* Extreme iOS Fixes */
+  #mobile-menu {
+    backface-visibility: hidden;
+    transform: translate3d(100%, 0, 0);
+    will-change: transform;
+  }
+
   .mobile-link {
-    transform: translate3d(0, 20px, 0);
+    transform: translate3d(30px, 0, 0);
     opacity: 0;
     will-change: transform, opacity;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease-out;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease-out;
   }
 
   #mobile-menu.is-open .mobile-link {
     transform: translate3d(0, 0, 0);
     opacity: 1;
   }
-</style>
 
+  /* Delays strictly in CSS */
+  .link-delay-0 { transition-delay: 0.1s; }
+  .link-delay-1 { transition-delay: 0.15s; }
+  .link-delay-2 { transition-delay: 0.2s; }
+  .link-delay-3 { transition-delay: 0.25s; }
+  .link-delay-4 { transition-delay: 0.3s; }
+  .link-delay-5 { transition-delay: 0.4s; }
+</style>
