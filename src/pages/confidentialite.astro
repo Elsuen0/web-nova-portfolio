@@ -1,0 +1,64 @@
+---
+import Layout from '../components/Layout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Politique de confidentialité | Web Nova Solutions"
+  description="Politique de confidentialité et gestion des données du site Web Nova Solutions."
+>
+  <main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+    <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Vos données</span>
+    <h1 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 mb-12 leading-[1.1] tracking-tight uppercase">
+      Politique de<br/>confidentialité
+    </h1>
+
+    <div class="space-y-10 text-brand-fg font-light leading-relaxed">
+      <section>
+        <h2 class="text-lg font-heading font-semibold text-brand-fg mb-3 tracking-tight">Aucun traceur publicitaire</h2>
+        <p class="text-brand-muted">
+          Ce site n'utilise aucun cookie de mesure d'audience, de publicité ou de traçage. Aucune donnée de
+          navigation n'est collectée ou revendue.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-heading font-semibold text-brand-fg mb-3 tracking-tight">Polices de caractères</h2>
+        <p class="text-brand-muted">
+          Ce site charge des polices via Google Fonts. Cela implique une requête technique vers les serveurs de
+          Google, qui peut recevoir votre adresse IP dans le cadre de cette requête, indépendamment de toute
+          navigation ou consentement.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-heading font-semibold text-brand-fg mb-3 tracking-tight">Formulaire de contact</h2>
+        <p class="text-brand-muted">
+          Les échanges initiés depuis ce site (email) sont envoyés directement à
+          <a href="mailto:contact@webnovasolutions.fr" class="text-brand-fg hover:text-brand-accent transition-colors">contact@webnovasolutions.fr</a>.
+          Les informations que vous transmettez (nom, email, message) sont utilisées uniquement pour vous répondre
+          et ne sont ni conservées à d'autres fins, ni transmises à des tiers.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-lg font-heading font-semibold text-brand-fg mb-3 tracking-tight">Vos droits</h2>
+        <p class="text-brand-muted">
+          Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression des données
+          vous concernant. Pour l'exercer, contactez
+          <a href="mailto:contact@webnovasolutions.fr" class="text-brand-fg hover:text-brand-accent transition-colors">contact@webnovasolutions.fr</a>.
+        </p>
+      </section>
+
+      <section>
+        <p class="text-sm text-brand-accent bg-brand-card border border-brand-fg/8 rounded-md p-4">
+          Cette page reflète le fonctionnement actuel du site (aucun outil d'analytics ni de suivi publicitaire
+          installé). Si vous ajoutez un outil de mesure d'audience ou de prise de rendez-vous à l'avenir, cette
+          politique devra être mise à jour en conséquence.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

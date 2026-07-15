@@ -1,0 +1,161 @@
+---
+const tiers = [
+  {
+    name: "Essentiel",
+    tag: "Pour un site qui reste simple, à jour et en sécurité.",
+    monthly: 79,
+    annualMonthly: 67,
+    highlight: false,
+    features: [
+      "Mises à jour de contenu (textes, photos, offres)",
+      "Maintenance technique & sécurité",
+      "Sauvegardes régulières",
+      "Support par email",
+    ],
+  },
+  {
+    name: "Évolutif",
+    tag: "Pour un site qui grandit au même rythme que votre activité.",
+    monthly: 149,
+    annualMonthly: 127,
+    highlight: true,
+    badge: "Le plus choisi",
+    inherits: "Tout Essentiel, plus :",
+    features: [
+      "Petites évolutions de design ou de structure",
+      "Ajout ponctuel de pages ou sections",
+      "Support prioritaire",
+    ],
+  },
+  {
+    name: "Sérénité",
+    tag: "Pour déléguer entièrement et ne plus jamais y penser.",
+    monthly: 279,
+    annualMonthly: 237,
+    highlight: false,
+    inherits: "Tout Évolutif, plus :",
+    features: [
+      "Point stratégique mensuel avec moi",
+      "Optimisations SEO continues",
+      "Délai de réponse garanti",
+    ],
+  },
+];
+---
+
+<section id="abonnement" class="py-28 px-6 max-w-7xl mx-auto">
+  <!-- Section header -->
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-12 mb-14 scroll-reveal">
+    <div class="max-w-2xl">
+      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Après la mise en ligne</span>
+      <h2 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
+        La mise en ligne,<br/>
+        <span class="text-brand-muted">c'est le début.</span>
+      </h2>
+    </div>
+    <p class="max-w-xs text-brand-muted font-light leading-relaxed">
+      Un site qui vieillit mal, c'est un site qui se voit. Choisissez le niveau d'accompagnement qui vous correspond.
+    </p>
+  </div>
+
+  <!-- Billing toggle -->
+  <div class="flex justify-center mb-12 scroll-reveal">
+    <div id="billing-toggle" class="inline-flex items-center p-1 rounded-full bg-brand-fg/5 border border-brand-fg/10 text-xs font-mono uppercase tracking-widest">
+      <button type="button" data-period="monthly" class="billing-btn is-active px-5 py-2.5 rounded-full transition-colors">
+        Mensuel
+      </button>
+      <button type="button" data-period="annual" class="billing-btn px-5 py-2.5 rounded-full transition-colors">
+        Annuel <span class="text-brand-accent">-15%</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Pricing grid -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {tiers.map((tier) => (
+      <div class={`relative rounded-lg p-8 flex flex-col scroll-reveal ${tier.highlight ? "bg-brand-fg text-brand-bg border border-brand-fg" : "bg-brand-card border border-brand-fg/8 text-brand-fg"}`}>
+        {tier.badge && (
+          <span class="absolute -top-3 left-8 px-4 py-1.5 rounded-full bg-brand-accent text-brand-bg text-[9px] font-mono uppercase tracking-widest font-bold">
+            {tier.badge}
+          </span>
+        )}
+
+        <h3 class="text-2xl font-heading font-bold uppercase tracking-tight mt-2">{tier.name}</h3>
+        <p class={`text-sm font-light leading-relaxed mt-3 mb-8 min-h-[3rem] ${tier.highlight ? "text-brand-bg/70" : "text-brand-muted"}`}>
+          {tier.tag}
+        </p>
+
+        <div class="mb-8">
+          <div class="flex items-baseline gap-1.5">
+            <span class="price-monthly text-4xl font-heading font-bold">{tier.monthly}€</span>
+            <span class="price-annual hidden text-4xl font-heading font-bold">{tier.annualMonthly}€</span>
+            <span class={`text-xs font-mono uppercase tracking-widest ${tier.highlight ? "text-brand-bg/60" : "text-brand-muted"}`}>/ mois</span>
+          </div>
+          <p class={`price-annual-note hidden text-[11px] font-mono mt-1.5 ${tier.highlight ? "text-brand-bg/50" : "text-brand-muted/70"}`}>
+            Facturé {tier.annualMonthly * 12}€ / an
+          </p>
+        </div>
+
+        <ul class="space-y-3 flex-grow mb-8">
+          {tier.inherits && (
+            <li class={`text-xs font-mono uppercase tracking-widest pb-2 mb-1 border-b ${tier.highlight ? "text-brand-bg/50 border-brand-bg/15" : "text-brand-muted/70 border-brand-fg/10"}`}>
+              {tier.inherits}
+            </li>
+          )}
+          {tier.features.map((feature) => (
+            <li class="flex items-start gap-3 text-sm font-light leading-relaxed">
+              <svg xmlns="http://www.w3.org/2000/svg" class={`h-4 w-4 mt-0.5 shrink-0 ${tier.highlight ? "text-brand-accent" : "text-brand-accent"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+
+        <a href="#contact"
+           class={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-sm uppercase tracking-widest font-mono transition-all hover:scale-105 active:scale-95 ${tier.highlight ? "bg-brand-bg text-brand-fg" : "bg-brand-fg text-brand-bg"}`}>
+          En discuter
+        </a>
+      </div>
+    ))}
+  </div>
+
+  <p class="text-center text-brand-muted/70 text-xs font-light mt-10 scroll-reveal">
+    Sans engagement en mensuel. Résiliable à tout moment.
+  </p>
+</section>
+
+<script>
+  const initBillingToggle = () => {
+    const toggle = document.getElementById("billing-toggle");
+    if (!toggle) return;
+
+    const buttons = toggle.querySelectorAll<HTMLButtonElement>(".billing-btn");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const period = btn.dataset.period;
+
+        buttons.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+
+        document.querySelectorAll(".price-monthly").forEach((el) => {
+          el.classList.toggle("hidden", period === "annual");
+        });
+        document.querySelectorAll(".price-annual, .price-annual-note").forEach((el) => {
+          el.classList.toggle("hidden", period !== "annual");
+        });
+      });
+    });
+  };
+
+  initBillingToggle();
+  document.addEventListener("astro:page-load", initBillingToggle);
+</script>
+
+<style>
+  .billing-btn.is-active {
+    background: var(--color-brand-fg);
+    color: var(--color-brand-bg);
+  }
+</style>

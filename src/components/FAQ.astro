@@ -1,0 +1,52 @@
+---
+const faqs = [
+  {
+    question: "Combien coûte un site avec vous ?",
+    answer: "Mes sites vitrine sur-mesure démarrent à 1 500€. Le prix exact dépend de votre projet — vous le connaîtrez avant que quoi que ce soit ne commence, dès le premier échange.",
+  },
+  {
+    question: "Je n'y connais rien en technique, c'est un problème ?",
+    answer: "Non, c'est même le cas de la majorité de mes client·e·s. Je vous explique tout simplement, sans jargon, et je reste disponible après la mise en ligne.",
+  },
+  {
+    question: "Combien de temps faut-il pour avoir mon site ?",
+    answer: "En général 3 à 4 semaines entre le premier échange et la mise en ligne, selon la disponibilité de votre contenu (textes, photos).",
+  },
+  {
+    question: "Je n'ai pas encore mes textes et mes photos, c'est grave ?",
+    answer: "Pas du tout. On peut avancer ensemble sur ces éléments, et je vous conseille sur ce qui sert le mieux votre image.",
+  },
+  {
+    question: "Je peux arrêter l'abonnement quand je veux ?",
+    answer: "Oui, la formule mensuelle est sans engagement. Vous pouvez suspendre ou arrêter à tout moment.",
+  },
+];
+---
+
+<section id="faq" class="py-28 px-6 max-w-4xl mx-auto">
+  <div class="mb-14 scroll-reveal">
+    <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Questions fréquentes</span>
+    <h2 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
+      Avant de vous<br/>
+      <span class="text-brand-muted">lancer.</span>
+    </h2>
+  </div>
+
+  <div class="divide-y divide-brand-fg/8 border-y border-brand-fg/8">
+    {faqs.map((faq, i) => (
+      <details class="group py-6 scroll-reveal" style={`transition-delay: ${i * 60}ms`}>
+        <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+          <span class="text-base md:text-lg font-heading font-semibold text-brand-fg tracking-tight">{faq.question}</span>
+          <span class="shrink-0 w-7 h-7 rounded-full border border-brand-fg/15 flex items-center justify-center text-brand-fg/60 transition-transform duration-300 group-open:rotate-45">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+            </svg>
+          </span>
+        </summary>
+        <p class="mt-4 text-sm md:text-base text-brand-muted font-light leading-relaxed max-w-2xl">
+          {faq.answer}
+        </p>
+      </details>
+    ))}
+  </div>
+</section>

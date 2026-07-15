@@ -1,12 +1,11 @@
 ---
-import { Image } from 'astro:assets';
-
 const projects = [
   {
     title: "Un Jour Une Promesse",
     subtitle: "Signature Digitale",
     domain: "unjourunepromesse.fr",
     category: "Architecture Web & Performance",
+    type: "Marque personnelle",
     description: "Création intégrale d'un univers web sur-mesure. Une interface épurée et performante qui transforme chaque visite en une immersion poétique.",
     link: "https://unjourunepromesse.fr",
   },
@@ -15,6 +14,7 @@ const projects = [
     subtitle: "Sérénité Digitale",
     domain: "deambreazen.fr",
     category: "Expérience Utilisateur & Design",
+    type: "Marque personnelle",
     description: "Création d'un espace web dédié au ressourcement. Une architecture fluide et un design épuré pour retranscrire l'apaisement du soin.",
     link: "https://deambreazen.fr",
   },
@@ -23,8 +23,18 @@ const projects = [
     subtitle: "Solution Logistique",
     domain: "activ-transport.fr",
     category: "Développement Web & Stratégie B2B",
+    type: "Structure locale",
     description: "Refonte d'une présence digitale orientée service. Une structure claire et robuste pour valoriser la réactivité d'un acteur majeur du transport.",
     link: "https://activ-transport.fr",
+  },
+  {
+    title: "HBC Salouël",
+    subtitle: "Esprit Club",
+    domain: "hbcsalouel.fr",
+    category: "Développement Web & Vie Associative",
+    type: "Structure locale",
+    description: "Un site vivant pour un club de handball : actualités, résultats, galerie et inscriptions réunis dans une expérience simple à faire vivre au quotidien.",
+    link: "https://www.hbcsalouel.fr",
   }
 ];
 ---
@@ -40,7 +50,7 @@ const projects = [
       </h2>
     </div>
     <p class="max-w-xs text-brand-muted font-light leading-relaxed">
-      Une sélection de projets où la performance technique rencontre l'excellence esthétique.
+      Des marques personnelles aux structures locales, une même exigence : capter ce qui vous rend unique.
     </p>
   </div>
 
@@ -48,14 +58,15 @@ const projects = [
   <div class="space-y-4">
     {projects.map((project, index) => (
       <a href={project.link} target="_blank" rel="noopener noreferrer" 
-         class="group block relative p-6 md:p-12 rounded-3xl bg-brand-card border border-white/5 hover:border-white/20 transition-all duration-500 overflow-hidden scroll-reveal"
+         class="group block relative p-6 md:p-12 rounded-lg bg-brand-card border border-brand-fg/6 hover:border-brand-accent/30 transition-all duration-500 overflow-hidden scroll-reveal"
          style={`transition-delay: ${index * 100}ms`}>
         
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 md:gap-8 relative z-10">
           <div class="space-y-4">
             <div class="flex flex-wrap items-center gap-2 md:gap-3">
+              <span class="text-[9px] md:text-[10px] font-mono px-2 py-0.5 rounded-md bg-brand-accent/10 text-brand-accent uppercase tracking-widest">{project.type}</span>
               <span class="text-[9px] md:text-[10px] font-mono text-brand-muted uppercase tracking-widest">{project.category}</span>
-              <span class="hidden md:block w-1 h-1 rounded-full bg-white/20"></span>
+              <span class="hidden md:block w-1 h-1 rounded-full bg-brand-fg/20"></span>
               <span class="text-[9px] md:text-[10px] font-mono text-brand-fg uppercase tracking-widest">{project.domain}</span>
             </div>
             
@@ -70,7 +81,7 @@ const projects = [
 
           <div class="flex items-center gap-4 text-brand-fg font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] group-hover:gap-6 transition-all duration-500">
             Explorer le projet
-            <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-brand-fg group-hover:text-brand-bg transition-colors duration-500">
+            <div class="w-10 h-10 rounded-full border border-brand-fg/15 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:text-brand-bg transition-colors duration-500">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -79,7 +90,7 @@ const projects = [
         </div>
 
         <!-- Subtle background glow on hover -->
-        <div class="absolute inset-0 bg-linear-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div class="absolute inset-0 bg-linear-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
       </a>
     ))}
   </div>

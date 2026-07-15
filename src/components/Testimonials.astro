@@ -53,14 +53,14 @@ const testimonials = [
   <!-- Section header -->
   <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-12 mb-12 md:mb-20 scroll-reveal">
     <div class="max-w-2xl">
-      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Témoignages</span>
+      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Ils me font confiance</span>
       <h2 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
-        Confiance &<br/>
-        <span class="text-brand-muted">impact durable.</span>
+        Une identité confiée.<br/>
+        <span class="text-brand-muted">Un résultat qui leur ressemble.</span>
       </h2>
     </div>
     <p class="max-w-xs text-brand-muted font-light leading-relaxed">
-      Ce sont mes clients qui en parlent le mieux. Extraits de collaborations réussies.
+      Ce sont mes client·e·s qui en parlent le mieux.
     </p>
   </div>
 
@@ -69,9 +69,9 @@ const testimonials = [
     {testimonials.map((testimonial, index) => (
       <div class="scroll-reveal h-full"
            style={`transition-delay: ${index * 50}ms`}>
-        <div class="h-full p-6 md:p-8 rounded-3xl bg-brand-card border border-white/5 hover:border-white/10 transition-colors duration-500 relative group overflow-hidden flex flex-col">
+        <div class="h-full p-6 md:p-8 rounded-lg bg-brand-card border border-brand-fg/6 hover:border-brand-accent/25 transition-colors duration-500 relative group overflow-hidden flex flex-col">
           <!-- Quote Icon -->
-          <div class="absolute top-6 right-8 text-white/5 group-hover:text-white/10 transition-colors duration-500">
+          <div class="absolute top-6 right-8 text-brand-accent/10 group-hover:text-brand-accent/20 transition-colors duration-500">
             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
               <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V5C14.017 4.44772 14.4647 4 15.017 4H19.017C20.6739 4 22.017 5.34315 22.017 7V15C22.017 17.5411 20.301 19.6822 17.9351 20.3807L14.017 21ZM2.01697 21L2.01697 18C2.01697 16.8954 2.9124 16 4.01697 16H7.01697C7.56925 16 8.01697 15.5523 8.01697 15V9C8.01697 8.44772 7.56925 8 7.01697 8H3.01697C2.46468 8 2.01697 7.55228 2.01697 7V5C2.01697 4.44772 2.46468 4 3.01697 4H7.01697C8.67382 4 10.017 5.34315 10.017 7V15C10.017 17.5411 8.30095 19.6822 5.93512 20.3807L2.01697 21Z" />
             </svg>
@@ -83,7 +83,7 @@ const testimonials = [
             </p>
             
             <div class="flex items-center gap-4 mt-auto">
-              <div class="w-10 h-10 rounded-full bg-linear-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center text-brand-fg font-bold text-xs">
+              <div class="w-10 h-10 rounded-full bg-linear-to-br from-brand-accent/20 to-brand-accent/5 border border-brand-fg/10 flex items-center justify-center text-brand-fg font-bold text-xs">
                 {testimonial.name.charAt(0)}
               </div>
               <div>
@@ -94,7 +94,7 @@ const testimonials = [
           </div>
 
           <!-- Subtle background glow on hover -->
-          <div class="absolute inset-0 bg-linear-to-br from-white/2 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="absolute inset-0 bg-linear-to-br from-brand-accent/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
         </div>
       </div>
     ))}

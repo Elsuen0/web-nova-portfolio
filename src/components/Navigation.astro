@@ -4,14 +4,14 @@
 
 <nav
   id="main-nav"
-  class="fixed top-0 inset-x-0 z-[70] px-6 py-5 flex items-center justify-between border-b border-white/5 bg-brand-bg/80 backdrop-blur-md transition-colors duration-300"
+  class="fixed top-0 inset-x-0 z-[70] px-6 py-5 flex items-center justify-between border-b border-brand-fg/8 bg-brand-bg/80 backdrop-blur-md transition-colors duration-300"
 >
   <a
     href="/"
     id="nav-logo"
-    class="text-brand-fg font-heading font-bold text-lg tracking-tight uppercase z-50 translate-z-0"
+    class="text-brand-fg font-heading font-semibold text-lg tracking-tight z-50 translate-z-0"
   >
-    Web Nova <span class="text-brand-muted font-light">Solutions</span>
+    Lucas <span class="text-brand-muted font-light italic">Capart</span>
   </a>
 
   <!-- Desktop Menu -->
@@ -20,6 +20,9 @@
   >
     <a href="/#services" class="hover:text-brand-fg transition-colors"
       >Services</a
+    >
+    <a href="/#abonnement" class="hover:text-brand-fg transition-colors"
+      >Abonnement</a
     >
     <a href="/#projets" class="hover:text-brand-fg transition-colors"
       >Réalisations</a
@@ -60,7 +63,7 @@
   class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-100"
 >
   <!-- Solid background for performance on iOS -->
-  <div class="absolute inset-0 bg-[#0f1115] w-full h-full shadow-2xl"></div>
+  <div class="absolute inset-0 bg-[#F7F1EA] w-full h-full shadow-2xl"></div>
 
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
@@ -71,6 +74,7 @@
       {
         [
           { label: "Services", href: "/#services" },
+          { label: "Abonnement", href: "/#abonnement" },
           { label: "Réalisations", href: "/#projets" },
           { label: "Avis", href: "/#avis" },
           { label: "Contact", href: "/#contact" },
@@ -109,7 +113,7 @@
     </nav>
 
     <!-- Menu Footer -->
-    <div class="mt-auto pt-12 border-t border-white/5 mobile-link" style="animation-delay: 0.4s">
+    <div class="mt-auto pt-12 border-t border-brand-fg/8 mobile-link" style="animation-delay: 0.4s">
       <div class="flex flex-col gap-8">
         <div>
           <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4">
@@ -126,7 +130,7 @@
             <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em]">Contact</p>
             <p class="text-xs text-brand-fg font-light">Amiens, France / Remote</p>
           </div>
-          <p class="text-[8px] font-mono text-brand-muted uppercase tracking-[0.2em]">© 2026 WEB NOVA</p>
+          <p class="text-[8px] font-mono text-brand-muted uppercase tracking-[0.2em]">© 2026 LUCAS CAPART</p>
         </div>
       </div>
     </div>
@@ -197,8 +201,8 @@
 <style>
   .grid-bg {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(rgba(43, 36, 32, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43, 36, 32, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 

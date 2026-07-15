@@ -7,24 +7,39 @@ import { services } from '../data/services';
 	<!-- Section header -->
 	<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 md:gap-12 mb-12 md:mb-20 scroll-reveal">
 		<div class="max-w-2xl">
-			<span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Expertises</span>
+			<span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Comment je vous accompagne</span>
 			<h2 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
-				Des solutions pointues pour<br/>
-				<span class="text-brand-muted">des ambitions illimitées.</span>
+				Un site à votre image,<br/>
+				<span class="text-brand-muted">sans le casse-tête technique.</span>
 			</h2>
 		</div>
-		<p class="max-w-xs text-brand-muted font-light leading-relaxed">
-			Créativité artistique et rigueur technique, au service de vos projets les plus ambitieux.
-		</p>
+		<div class="max-w-xs">
+			<p class="text-brand-muted font-light leading-relaxed">
+				Vous vous concentrez sur votre activité. Je m'occupe du reste.
+			</p>
+			<p class="mt-4 text-sm font-mono text-brand-fg">
+				À partir de <span class="text-brand-accent font-bold">1 500€</span> · devis clair avant de démarrer
+			</p>
+		</div>
 	</div>
 
-	<!-- Cards grid -->
+	<!-- Featured service -->
+	<div class="scroll-reveal mb-4">
+		<ServiceCard {...services[0]} featured />
+	</div>
+
+	<!-- Remaining services grid -->
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-		{services.map((service, index) => (
-			<div class="scroll-reveal" style={`transition-delay: ${index * 100}ms`}>
+		{services.slice(1).map((service, index) => (
+			<div class="scroll-reveal h-full" style={`transition-delay: ${index * 100}ms`}>
 				<ServiceCard {...service} />
 			</div>
 		))}
 	</div>
+
+	<!-- Technical reassurance strip -->
+	<p class="mt-12 md:mt-16 text-center text-brand-muted/60 font-light text-xs md:text-sm max-w-2xl mx-auto leading-relaxed scroll-reveal">
+		En coulisses&nbsp;: score de performance 100/100, sécurité renforcée et référencement optimisé — parce que la technique doit être irréprochable, même si vous n'avez pas à y penser.
+	</p>
 </section>
 
