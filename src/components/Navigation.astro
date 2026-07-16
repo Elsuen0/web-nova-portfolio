@@ -87,14 +87,13 @@
           <a
             href={item.href}
             class="mobile-link text-4xl font-heading font-bold uppercase tracking-tight text-brand-fg hover:text-brand-muted transition-colors translate-z-0"
-            style={`animation-delay: ${0.05 + i * 0.05}s`}
           >
             {item.label}
           </a>
         ))
       }
 
-      <div class="mt-4 mobile-link" style="animation-delay: 0.3s">
+      <div class="mt-4 mobile-link">
         <a
           href="https://calendly.com/lucascapartpro/30min"
           target="_blank"
@@ -120,7 +119,7 @@
     </nav>
 
     <!-- Menu Footer -->
-    <div class="mt-auto pt-12 border-t border-brand-fg/8 mobile-link" style="animation-delay: 0.4s">
+    <div class="mt-auto pt-12 border-t border-brand-fg/8 mobile-link">
       <div class="flex flex-col gap-8">
         <div>
           <p class="text-[10px] font-mono text-brand-muted uppercase tracking-[0.3em] mb-4">
@@ -159,6 +158,7 @@
     let isOpen = false;
     mobileMenu.classList.add("hidden");
     mobileMenu.classList.remove("flex", "is-open");
+    mobileLinks.forEach((link) => link.classList.remove("mobile-link-visible"));
     document.body.style.overflow = "";
 
     const toggleMenu = () => {
@@ -175,12 +175,26 @@
         requestAnimationFrame(() => {
           mobileMenu.classList.add("is-open");
         });
+
+        // Stagger the links in with JS-timed transitions rather than
+        // CSS animation-delay, which can silently collapse (all items
+        // popping in at once, no stagger) when the page is already busy
+        // painting other animations — e.g. right at the top of the homepage.
+        mobileLinks.forEach((link, i) => {
+          setTimeout(() => {
+            link.classList.add("mobile-link-visible");
+          }, 150 + i * 60);
+        });
       } else {
         mobileMenu.classList.remove("is-open");
 
         // Restore header blur
         mainNav.classList.add("backdrop-blur-md");
         mainNav.classList.remove("bg-brand-bg");
+
+        mobileLinks.forEach((link) => {
+          link.classList.remove("mobile-link-visible");
+        });
 
         setTimeout(() => {
           if (!isOpen) mobileMenu.classList.add("hidden");
@@ -248,22 +262,13 @@
   .mobile-link {
     opacity: 0;
     transform: translateY(15px) translate3d(0, 0, 0);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, opacity;
   }
 
-  #mobile-menu.is-open .mobile-link {
-    animation: revealUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  @keyframes revealUp {
-    from {
-      opacity: 0;
-      transform: translateY(15px) translate3d(0, 0, 0);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0) translate3d(0, 0, 0);
-    }
+  .mobile-link.mobile-link-visible {
+    opacity: 1;
+    transform: translateY(0) translate3d(0, 0, 0);
   }
 
   .translate-z-0 {
