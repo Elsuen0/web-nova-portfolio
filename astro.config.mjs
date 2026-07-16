@@ -9,7 +9,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://webnovasolutions.fr',
+  site: 'https://lucascapart.fr',
   vite: {
     plugins: [tailwindcss()],
     ssr: {
