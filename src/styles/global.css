@@ -29,6 +29,19 @@
   h1, h2, h3, h4, .font-heading {
     @apply font-heading font-medium tracking-tight;
   }
+
+  /* Custom focus style, on-brand instead of the browser's default black
+     ring. :focus-visible only fires for keyboard navigation, so mouse
+     clicks stay clean while keyboard accessibility is preserved. */
+  a, button, [tabindex] {
+    outline: none;
+  }
+
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid var(--color-brand-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 }
 
 @layer utilities {
