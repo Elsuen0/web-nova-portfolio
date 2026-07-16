@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webnovasolutions.fr/sitemap-index.xml
+Sitemap: https://lucascapart.fr/sitemap-index.xml
