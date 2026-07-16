@@ -10,11 +10,25 @@ import Testimonials from "../components/Testimonials.astro";
 import Signature from "../components/Signature.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
+import { faqs } from "../data/faqs";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 ---
 
 <Layout
-  title="Lucas Capart | Votre site, à l'image de qui vous êtes vraiment"
-  description="Lucas Capart conçoit des sites pour les indépendants et créateurs — coachs, praticiens, artisans, entrepreneurs — qui ont une vraie identité à faire vivre en ligne. Design sur-mesure, performance et accompagnement continu."
+  title="Création de site web à Amiens | Lucas Capart"
+  description="Lucas Capart conçoit des sites web sur-mesure à Amiens pour indépendants et créateurs — coachs, praticiens, artisans, entrepreneurs. Design personnalisé, performance et accompagnement continu."
 >
   <main>
     <Hero />
@@ -84,6 +98,8 @@ import Footer from "../components/Footer.astro";
       </div>
     </section>
   </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
   <Footer />
 </Layout>

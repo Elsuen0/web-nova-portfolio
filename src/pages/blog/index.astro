@@ -1,0 +1,70 @@
+---
+import Layout from "../../components/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+---
+
+<Layout
+  title="Journal | Lucas Capart — Création de site web à Amiens"
+  description="Conseils, réflexions et guides sur la création de site internet, pensés pour les indépendants et créateurs d'Amiens et d'ailleurs."
+>
+  <main class="pt-32 pb-24 px-6 max-w-5xl mx-auto">
+    <div class="mb-16 scroll-reveal">
+      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Journal</span>
+      <h1 class="text-4xl md:text-6xl font-heading font-bold text-brand-fg mt-4 leading-[1.1] tracking-tight uppercase">
+        Conseils &<br/>
+        <span class="text-brand-muted">réflexions.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-brand-muted font-light leading-relaxed">
+        Des articles sur la création de site, le référencement local et l'identité digitale — pensés pour les indépendants et créateurs d'Amiens et d'ailleurs.
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      {posts.map((post, index) => (
+        <a
+          href={`/blog/${post.id}`}
+          class="group block relative p-6 md:p-10 rounded-lg bg-brand-card border border-brand-fg/6 hover:border-brand-accent/30 transition-all duration-500 overflow-hidden scroll-reveal"
+          style={`transition-delay: ${index * 80}ms`}
+        >
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-8 relative z-10">
+            <div class="space-y-3">
+              <span class="text-[9px] md:text-[10px] font-mono text-brand-muted uppercase tracking-widest">
+                {dateFormatter.format(post.data.publishDate)}
+              </span>
+              <h2 class="text-xl md:text-3xl font-heading font-semibold text-brand-fg tracking-tight group-hover:translate-x-1 transition-transform duration-500">
+                {post.data.title}
+              </h2>
+              <p class="max-w-2xl text-brand-muted font-light leading-relaxed text-sm md:text-base">
+                {post.data.description}
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 text-brand-fg font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em] shrink-0 group-hover:gap-5 transition-all duration-500">
+              Lire l'article
+              <div class="w-9 h-9 rounded-full border border-brand-fg/15 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent group-hover:text-brand-bg transition-colors duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute inset-0 bg-linear-to-br from-brand-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

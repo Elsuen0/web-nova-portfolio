@@ -1,0 +1,113 @@
+---
+import Layout from "../../components/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
+  day: "numeric",
+  month: "long",
+  year: "numeric",
+});
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishDate.toISOString(),
+  author: {
+    "@type": "Person",
+    name: post.data.author,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Lucas Capart",
+  },
+  mainEntityOfPage: `https://lucascapart.fr/blog/${post.id}`,
+};
+---
+
+<Layout
+  title={`${post.data.title} | Lucas Capart`}
+  description={post.data.description}
+>
+  <main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+    <a href="/blog" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-fg transition-colors mb-12 group text-xs font-mono uppercase tracking-widest scroll-reveal">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+      </svg>
+      Retour au journal
+    </a>
+
+    <div class="mb-12 scroll-reveal">
+      <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">
+        {dateFormatter.format(post.data.publishDate)} · {post.data.author}
+      </span>
+      <h1 class="text-3xl md:text-5xl font-heading font-bold text-brand-fg mt-4 leading-[1.15] tracking-tight">
+        {post.data.title}
+      </h1>
+    </div>
+
+    <article class="article-content text-brand-fg font-light leading-relaxed scroll-reveal">
+      <Content />
+    </article>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .article-content h2 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--color-brand-fg);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article-content p {
+    margin-bottom: 1.25rem;
+    color: var(--color-brand-muted);
+  }
+
+  .article-content ul {
+    margin: 0 0 1.25rem 0;
+    padding-left: 1.25rem;
+    list-style: disc;
+    color: var(--color-brand-muted);
+  }
+
+  .article-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .article-content strong {
+    color: var(--color-brand-fg);
+    font-weight: 600;
+  }
+
+  .article-content a {
+    color: var(--color-brand-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-content a:hover {
+    color: var(--color-brand-fg);
+  }
+</style>
