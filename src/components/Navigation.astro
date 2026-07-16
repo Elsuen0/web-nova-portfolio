@@ -145,21 +145,29 @@
 </div>
 
 <script>
-  const mainNav = document.getElementById("main-nav");
-  const menuToggle = document.getElementById("menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
-  const spans = menuToggle?.querySelectorAll("span");
+  const initMobileMenu = () => {
+    const mainNav = document.getElementById("main-nav");
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    const spans = menuToggle?.querySelectorAll("span");
 
-  let isOpen = false;
+    if (!mainNav || !menuToggle || !mobileMenu || !spans) return;
 
-  const toggleMenu = () => {
-    isOpen = !isOpen;
-    if (mobileMenu && spans && mainNav) {
+    // Always start closed — relevant after a client-side page transition,
+    // where the DOM is swapped but old state could otherwise leak through.
+    let isOpen = false;
+    mobileMenu.classList.add("hidden");
+    mobileMenu.classList.remove("flex", "is-open");
+    document.body.style.overflow = "";
+
+    const toggleMenu = () => {
+      isOpen = !isOpen;
+
       if (isOpen) {
         mobileMenu.classList.remove("hidden");
         mobileMenu.classList.add("flex");
-        
+
         // Performance: disable header blur when menu is open to fix iOS freeze
         mainNav.classList.remove("backdrop-blur-md");
         mainNav.classList.add("bg-brand-bg"); // Solid background
@@ -169,7 +177,7 @@
         });
       } else {
         mobileMenu.classList.remove("is-open");
-        
+
         // Restore header blur
         mainNav.classList.add("backdrop-blur-md");
         mainNav.classList.remove("bg-brand-bg");
@@ -185,24 +193,32 @@
       spans[0].style.transform = isOpen
         ? "rotate(45deg) translate(2px, -1px) translateZ(0)"
         : "translateZ(0)";
-      
+
       // Middle bar: use both scale and opacity for clean disappearance on Chrome Mobile
       spans[1].style.opacity = isOpen ? "0" : "1";
       spans[1].style.transform = isOpen ? "scaleX(0) translateZ(0)" : "scaleX(1) translateZ(0)";
-      
+
       spans[2].style.transform = isOpen
         ? "rotate(-45deg) translate(2px, 1px) translateZ(0)"
         : "translateZ(0)";
-    }
+    };
+
+    menuToggle.addEventListener("click", toggleMenu);
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isOpen) toggleMenu();
+      });
+    });
   };
 
-  menuToggle?.addEventListener("click", toggleMenu);
+  // Run on initial load...
+  initMobileMenu();
 
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (isOpen) toggleMenu();
-    });
-  });
+  // ...and re-run after every client-side page transition, since Astro's
+  // ClientRouter swaps the DOM without a full reload and this component's
+  // script (and any listeners it attached) would otherwise never re-run.
+  document.addEventListener("astro:page-load", initMobileMenu);
 </script>
 
 <style>
