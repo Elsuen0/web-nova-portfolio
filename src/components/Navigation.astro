@@ -63,7 +63,7 @@
   class="md:hidden fixed inset-0 w-full h-full z-60 hidden opacity-100"
 >
   <!-- Solid background for performance on iOS -->
-  <div class="absolute inset-0 bg-[#F7F1EA] w-full h-full shadow-2xl"></div>
+  <div class="absolute inset-0 bg-brand-bg w-full h-full shadow-2xl"></div>
 
   <!-- Texture overlay -->
   <div class="absolute inset-0 grid-bg opacity-10 pointer-events-none"></div>
@@ -206,20 +206,20 @@
     background-size: 40px 40px;
   }
 
-  /* Snapier UX Animations */
+  /* Transform/opacity based reveal: cheap for Safari's compositor,
+     avoids the clip-path repaint cost that previously caused jank
+     and dropped taps on iOS. */
   #mobile-menu {
-    /* Simplified clip-path origin for Safari stability */
-    clip-path: circle(0% at 90% 40px);
-    transition: clip-path 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: clip-path;
-    transform: translateZ(0);
+    opacity: 0;
+    transform: translate3d(0, -12px, 0) scale(0.98);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
     backface-visibility: hidden;
-    /* Extra rendering hint */
-    contain: paint;
   }
 
   #mobile-menu.is-open {
-    clip-path: circle(150% at 90% 40px);
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
   }
 
   .mobile-link {

@@ -1,23 +1,22 @@
 ---
-import Layout from '../components/Layout.astro';
-import Hero from '../components/Hero.astro';
-import LogoMarquee from '../components/LogoMarquee.astro';
-import Process from '../components/Process.astro';
-import Services from '../components/Services.astro';
-import Subscription from '../components/Subscription.astro';
-import Projects from '../components/Projects.astro';
-import Testimonials from '../components/Testimonials.astro';
-import Signature from '../components/Signature.astro';
-import FAQ from '../components/FAQ.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../components/Layout.astro";
+import Hero from "../components/Hero.astro";
+import LogoMarquee from "../components/LogoMarquee.astro";
+import Process from "../components/Process.astro";
+import Services from "../components/Services.astro";
+import Subscription from "../components/Subscription.astro";
+import Projects from "../components/Projects.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Signature from "../components/Signature.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout
   title="Lucas Capart | Votre site, à l'image de qui vous êtes vraiment"
-  description="Lucas Capart conçoit des sites pour les indépendantes et créatrices — coachs, praticiennes, artisanes, entrepreneures — qui ont une vraie identité à faire vivre en ligne. Design sur-mesure, performance et accompagnement continu."
+  description="Lucas Capart conçoit des sites pour les indépendants et créateurs — coachs, praticiens, artisans, entrepreneurs — qui ont une vraie identité à faire vivre en ligne. Design sur-mesure, performance et accompagnement continu."
 >
   <main>
-
     <Hero />
     <Testimonials />
     <Signature />
@@ -30,32 +29,58 @@ import Footer from '../components/Footer.astro';
 
     <!-- CTA Section -->
     <section id="contact" class="py-20 md:py-32 px-6 scroll-reveal">
-      <div class="max-w-4xl mx-auto rounded-lg bg-brand-card border border-brand-fg/8 p-8 md:p-24 text-center relative overflow-hidden">
+      <div
+        class="max-w-4xl mx-auto rounded-lg bg-brand-card border border-brand-fg/8 p-8 md:p-24 text-center relative overflow-hidden"
+      >
         <div class="absolute inset-0 grid-bg opacity-20 rounded-lg"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-40 bg-brand-accent/12 rounded-full blur-3xl"></div>
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-40 bg-brand-accent/12 rounded-full blur-3xl"
+        >
+        </div>
 
-        <span class="relative text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Passons à l'action</span>
-        <h2 class="relative text-3xl md:text-6xl font-heading font-bold text-brand-fg mt-6 mb-8 leading-[1.2] md:leading-[1.1] tracking-tight uppercase">
-          Un site à votre image<br/>
+        <span
+          class="relative text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]"
+          >Passons à l'action</span
+        >
+        <h2
+          class="relative text-3xl md:text-6xl font-heading font-bold text-brand-fg mt-6 mb-8 leading-[1.2] md:leading-[1.1] tracking-tight uppercase"
+        >
+          Un site à votre image<br />
           <span class="text-brand-muted">vous attend.</span>
         </h2>
-        <p class="relative max-w-xl mx-auto text-brand-muted font-light mb-4 leading-relaxed text-sm md:text-base">
-          Un échange de 30 minutes pour cerner votre projet et votre univers. Aucun engagement, juste de la valeur.
+        <p
+          class="relative max-w-xl mx-auto text-brand-muted font-light mb-4 leading-relaxed text-sm md:text-base"
+        >
+          Un échange de 30 minutes pour cerner votre projet et votre univers.
+          Aucun engagement, juste de la valeur.
         </p>
-        <p class="relative text-xs font-mono text-brand-fg/60 uppercase tracking-widest mb-12">
+        <p
+          class="relative text-xs font-mono text-brand-fg/60 uppercase tracking-widest mb-12"
+        >
           Sites sur-mesure à partir de 1 500€
         </p>
-        <a href="mailto:contact@lucascapart.fr"
-           id="cta-main-email"
-           class="relative inline-flex items-center gap-2 px-8 md:px-12 py-4 md:py-5 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform w-full sm:w-auto justify-center">
+        <a
+          href="mailto:contact@lucascapart.fr"
+          id="cta-main-email"
+          class="relative inline-flex items-center gap-2 px-8 md:px-12 py-4 md:py-5 bg-brand-fg text-brand-bg rounded-full font-semibold text-sm hover:scale-105 active:scale-95 transition-transform w-full sm:w-auto justify-center"
+        >
           Réserver un appel gratuit
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
           </svg>
         </a>
       </div>
     </section>
-
   </main>
 
   <Footer />
@@ -64,8 +89,8 @@ import Footer from '../components/Footer.astro';
 <style>
   .grid-bg {
     background-image:
-      linear-gradient(rgba(43,36,32,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(43,36,32,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(43, 36, 32, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(43, 36, 32, 0.05) 1px, transparent 1px);
     background-size: 60px 60px;
   }
 </style>
