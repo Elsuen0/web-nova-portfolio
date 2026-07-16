@@ -14,6 +14,7 @@ const {
 } = Astro.props;
 
 import { ClientRouter } from 'astro:transitions';
+import Analytics from '@vercel/analytics/astro';
 import Navigation from './Navigation.astro';
 import SEO from './SEO.astro';
 import '../styles/global.css';
@@ -24,6 +25,7 @@ import '../styles/global.css';
   <head>
     <SEO {title} {description} {image} {type} />
     <ClientRouter />
+    <Analytics />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
