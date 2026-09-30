@@ -36,6 +36,16 @@ import '../styles/global.css';
 
       gtag('config', 'AW-18424875700');
     </script>
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href*="calendly.com"]');
+        if (link) {
+          gtag('event', 'conversion', {
+            'send_to': 'AW-18424875700/2VhiCO6Y0OwcELSV1dFE'
+          });
+        }
+      });
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
