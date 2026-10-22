@@ -298,6 +298,13 @@ export const services = [
 					"Prise de rendez-vous, formulaire avancé, blog, boutique, espace réservé : la plupart des besoins se branchent sur un site Astro ou Next.js grâce à des outils éprouvés, comme Calendly pour l'agenda, Stripe ou Shopify pour le paiement, ou un outil d'édition pour gérer vos textes. On en parle au premier échange pour définir ce qui vous sera vraiment utile.",
 				],
 			},
+			{
+				title: "Un site pensé pour durer",
+				body: [
+					"Un site bien construit n'a pas besoin d'être refait tous les deux ans. Le code est organisé en composants réutilisables : ajouter une page, une section ou une nouvelle prestation se fait proprement, sans tout casser. Et comme le site ne dépend pas d'extensions tierces qui changent sans prévenir, il continue de fonctionner tel quel, année après année.",
+					"C'est aussi ce qui rend la maintenance simple et peu coûteuse : il y a moins de choses à surveiller, et chaque modification est vérifiée avant d'être mise en ligne.",
+				],
+			},
 		],
 		benefits: [
 			"Pages statiques ultra-rapides avec Astro",
@@ -457,6 +464,12 @@ export const services = [
 					"Référencement local, fiche Google, publicité, réseaux sociaux, partenariats locaux : je vous aide à choisir les canaux qui ont du sens pour votre activité et votre budget, plutôt que d'être partout à moitié. Pour un indépendant à Amiens, les leviers les plus efficaces sont souvent gratuits : une fiche Google soignée, des avis clients réguliers et un site qui répond clairement aux questions.",
 				],
 			},
+			{
+				title: "Un regard extérieur sur votre activité",
+				body: [
+					"Quand on est indépendant, on est souvent trop proche de son activité pour voir ce qui bloque un visiteur. J'apporte un regard extérieur : je lis votre site comme le ferait un client qui ne vous connaît pas, je repère les zones floues, les informations manquantes et les étapes de trop, puis je vous propose des changements concrets, classés par ordre d'impact.",
+				],
+			},
 		],
 		benefits: [
 			"Définition de vos objectifs et de votre cible",
@@ -531,6 +544,13 @@ export const services = [
 				title: "Vendre localement aussi",
 				body: [
 					"Vous êtes à Amiens ou dans la Somme ? Le retrait sur place, la livraison locale ou la commande pour un atelier peuvent être proposés au moment du paiement. Une boutique en ligne n'est pas réservée à la vente à distance : elle peut aussi simplifier la vie de vos clients d'ici.",
+				],
+			},
+			{
+				title: "Après la mise en ligne",
+				body: [
+					"Une boutique vit au rythme de vos collections, de vos saisons et de vos promotions. Je vous accompagne au lancement pour vérifier que les premières commandes se passent bien, puis vous pouvez continuer avec un accompagnement mensuel : ajout de pages, évolutions du design, optimisations pour Google.",
+					"Vous gardez la main sur vos produits au quotidien, et vous savez à qui vous adresser pour tout le reste.",
 				],
 			},
 		],
@@ -613,6 +633,16 @@ export const services = [
 				title: "Et si mon site n'a pas été créé par vous ?",
 				body: [
 					"Je peux reprendre la maintenance d'un site existant après un premier regard sur sa technique. Si le site est trop fragile ou trop ancien pour être entretenu sereinement, je vous le dis, et on regarde si une refonte serait plus raisonnable.",
+				],
+			},
+			{
+				title: "Ce que la maintenance vous évite",
+				body: [],
+				bullets: [
+					"Un formulaire de contact qui ne fonctionne plus depuis des semaines sans que personne ne s'en aperçoive.",
+					"Des tarifs ou des horaires périmés qui donnent une mauvaise première impression.",
+					"Un certificat de sécurité expiré qui affiche une alerte dans le navigateur de vos visiteurs.",
+					"Une page perdue après une mauvaise manipulation, faute de sauvegarde.",
 				],
 			},
 		],
