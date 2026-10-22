@@ -10,13 +10,12 @@ interface Props {
 const {
   title,
   description,
-  image = '/og-image.png', // We should create this or use a default
+  image = '/og-image.png',
   canonicalURL = Astro.url.href,
   type = 'website',
 } = Astro.props;
 
 const siteName = "Lucas Capart";
-const twitterHandle = "@webnova_sol"; // Placeholder
 ---
 
 <!-- Global Metadata -->
@@ -43,6 +42,7 @@ const twitterHandle = "@webnova_sol"; // Placeholder
 <meta property="og:description" content={description} />
 <meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="fr_FR" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
@@ -50,7 +50,6 @@ const twitterHandle = "@webnova_sol"; // Placeholder
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
-<meta property="twitter:site" content={twitterHandle} />
 
 <!-- Theme Color -->
 <meta name="theme-color" content="#EFE7D6" />
@@ -61,11 +60,9 @@ const twitterHandle = "@webnova_sol"; // Placeholder
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "name": "Lucas Capart",
-    "alternateName": "Web Nova Solutions",
     "image": "https://lucascapart.fr/logo.png",
     "@id": "https://lucascapart.fr",
     "url": "https://lucascapart.fr",
-    "telephone": "",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "76 rue du Professeur Christian Cabrol",
