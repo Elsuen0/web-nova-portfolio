@@ -4,6 +4,9 @@ export const services = [
 	{
 		title: "Design UX/UI Premium",
 		slug: "design-ux-ui-premium",
+		eyebrow: "Webdesign · Amiens",
+		seoTitle: "Webdesigner à Amiens : design de site sur-mesure",
+		seoDescription: "Webdesigner à Amiens, je crée le design de votre site pour coachs, praticiens et artisans : une identité qui vous ressemble, dès 1 500 €. Premier appel offert.",
 		description: "Une identité visuelle qui capte qui vous êtes vraiment, pour que vos client·e·s vous reconnaissent au premier regard.",
         detailedDescription: "Le design ne se limite pas à l'esthétique ; c'est une question de fonctionnalité et d'émotion. Je conçois des interfaces 'Haute Couture' qui allient minimalisme moderne et psychologie de conversion. Chaque interaction est pensée pour réduire la friction et maximiser l'engagement de vos visiteurs.",
 		Icon: Lucide.Palette,
@@ -23,6 +26,9 @@ export const services = [
 	{
 		title: "Développement Astro & Next.js",
 		slug: "developpement-astro-nextjs",
+		eyebrow: "Développement web · Amiens",
+		seoTitle: "Développeur web freelance à Amiens",
+		seoDescription: "Développeur web freelance à Amiens : des sites ultra-rapides en Astro et Next.js, bien référencés et faciles à vivre. Devis gratuit, réponse sous 24 h.",
 		description: "Un site qui se charge instantanément et fonctionne parfaitement, sans que vous ayez à vous en soucier.",
         detailedDescription: "J'utilise les technologies les plus avancées du marché pour bâtir des sites d'une rapidité insolente. Grâce à Astro et son architecture 'd'îles' (Islands Architecture), je supprime le JavaScript inutile pour atteindre des scores de performance parfaits (Lighthouse 100/100). Un site plus rapide n'est pas seulement un confort, c'est un levier de conversion majeur.",
 		Icon: Lucide.Code2,
@@ -42,6 +48,9 @@ export const services = [
 	{
 		title: "SEO Sémantique & Technique",
 		slug: "seo-semantique-technique",
+		eyebrow: "Référencement · Amiens",
+		seoTitle: "Référencement local et SEO à Amiens",
+		seoDescription: "Référencement local à Amiens : fiche Google, SEO technique et contenus pour que vos clients vous trouvent. Pour indépendants, coachs et artisans.",
 		description: "Une visibilité qui dure, pour que les bonnes personnes vous trouvent sans effort de votre part.",
         detailedDescription: "Le SEO technique est ma spécialité. Je ne me contente pas de mots-clés : j'optimise la structure profonde de votre site (Schema.org, maillage interne, sémantique HTML5) pour que les algorithmes de Google vous identifient comme l'autorité de votre secteur. Une visibilité durable passe par une base technique irréprochable.",
 		Icon: Lucide.Search,
@@ -61,6 +70,9 @@ export const services = [
 	{
 		title: "Stratégie Digitale",
 		slug: "strategie-digitale",
+		eyebrow: "Stratégie web · Amiens",
+		seoTitle: "Stratégie web pour indépendants à Amiens",
+		seoDescription: "Un site pensé pour convertir : parcours client, messages clairs, suivi des demandes et acquisition. Accompagnement stratégique pour indépendants à Amiens.",
 		description: "Un site pensé pour transformer vos visiteurs en client·e·s, aligné avec vos vrais objectifs.",
         detailedDescription: "Votre site web est votre plus puissant outil de vente. Je vous accompagne dans la définition de votre tunnel de conversion et de votre écosystème digital. De l'acquisition de trafic à la fidélisation, je construis une stratégie cohérente pour transformer chaque visiteur en client.",
 		Icon: Lucide.Rocket,
@@ -80,6 +92,9 @@ export const services = [
 	{
 		title: "E-commerce Haute Performance",
 		slug: "ecommerce-haute-performance",
+		eyebrow: "E-commerce · Amiens",
+		seoTitle: "Création de site e-commerce à Amiens",
+		seoDescription: "Création de boutique en ligne à Amiens pour créateurs et artisans : simple à gérer, rapide sur mobile, paiement sécurisé avec Shopify ou Stripe. Devis gratuit.",
 		description: "Une boutique simple à gérer, agréable à parcourir, qui vend pendant que vous travaillez.",
         detailedDescription: "Dans l'e-commerce, chaque milliseconde de retard coûte de l'argent. Je crée des boutiques 'Headless' utilisant la puissance du cloud. En séparant l'interface du moteur e-commerce, j'offre une expérience d'achat fluide, sécurisée et incroyablement rapide, de la fiche produit au paiement.",
 		Icon: Lucide.Layout,
@@ -99,6 +114,9 @@ export const services = [
 	{
 		title: "Maintenance & Évolution",
 		slug: "maintenance-evolution",
+		eyebrow: "Maintenance · Amiens",
+		seoTitle: "Maintenance de site internet à Amiens",
+		seoDescription: "Maintenance de site web à Amiens : mises à jour, sauvegardes, sécurité et petites évolutions, dès 79 €/mois. Votre site reste rapide et à jour, sans effort.",
 		description: "Votre site continue d'évoluer avec vous, sans jamais devenir un poids à gérer seule.",
         detailedDescription: "Un site web est un organisme vivant. Pour rester performant et sécurisé face aux évolutions technologiques, il nécessite une attention constante. Mon service de maintenance proactive garantit que votre site reste rapide, à jour et protégé contre les menaces, tout en évoluant avec vos besoins.",
 		Icon: Lucide.MessageSquare,

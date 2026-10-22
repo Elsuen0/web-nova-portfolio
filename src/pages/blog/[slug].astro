@@ -2,6 +2,7 @@
 import Layout from "../../components/Layout.astro";
 import Footer from "../../components/Footer.astro";
 import { getCollection, render } from "astro:content";
+import { services } from "../../data/services";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -20,30 +21,50 @@ const dateFormatter = new Intl.DateTimeFormat("fr-FR", {
   year: "numeric",
 });
 
+const postURL = `https://lucascapart.fr/blog/${post.id}/`;
+const relatedServices = services.filter((s) => post.data.services.includes(s.slug));
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.publishDate.toISOString(),
+  dateModified: (post.data.updatedDate ?? post.data.publishDate).toISOString(),
+  image: "https://lucascapart.fr/og-image.png",
+  inLanguage: "fr-FR",
   author: {
     "@type": "Person",
     name: post.data.author,
+    url: "https://lucascapart.fr/",
   },
   publisher: {
     "@type": "Person",
     name: "Lucas Capart",
+    url: "https://lucascapart.fr/",
   },
-  mainEntityOfPage: `https://lucascapart.fr/blog/${post.id}`,
+  mainEntityOfPage: postURL,
+  url: postURL,
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Accueil", item: "https://lucascapart.fr/" },
+    { "@type": "ListItem", position: 2, name: "Journal", item: "https://lucascapart.fr/blog/" },
+    { "@type": "ListItem", position: 3, name: post.data.title, item: postURL },
+  ],
 };
 ---
 
 <Layout
-  title={`${post.data.title} | Lucas Capart`}
+  title={`${post.data.seoTitle ?? post.data.title} | Lucas Capart`}
+  type="article"
   description={post.data.description}
 >
   <main class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
-    <a href="/blog" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-fg transition-colors mb-12 group text-xs font-mono uppercase tracking-widest scroll-reveal">
+    <a href="/blog/" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-fg transition-colors mb-12 group text-xs font-mono uppercase tracking-widest scroll-reveal">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
       </svg>
@@ -62,9 +83,27 @@ const articleSchema = {
     <article class="article-content text-brand-fg font-light leading-relaxed scroll-reveal">
       <Content />
     </article>
+
+    {relatedServices.length > 0 && (
+      <aside class="mt-16 pt-10 border-t border-brand-fg/8 scroll-reveal">
+        <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">Pour aller plus loin</span>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {relatedServices.map((service) => (
+            <a
+              href={`/services/${service.slug}/`}
+              class="group block p-6 rounded-lg bg-brand-card border border-brand-fg/6 hover:border-brand-accent/30 transition-colors"
+            >
+              <span class="block text-lg font-heading font-semibold text-brand-fg tracking-tight">{service.title}</span>
+              <span class="block mt-2 text-sm text-brand-muted font-light leading-relaxed">{service.description}</span>
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
   </main>
 
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 
   <Footer />
 </Layout>

@@ -7,6 +7,9 @@ const blog = defineCollection({
     title: z.string(),
     description: z.string(),
     publishDate: z.date(),
+    updatedDate: z.date().optional(),
+    seoTitle: z.string().optional(),
+    services: z.array(z.string()).default([]),
     author: z.string().default('Lucas Capart'),
   }),
 });

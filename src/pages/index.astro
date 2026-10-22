@@ -9,6 +9,7 @@ import Projects from "../components/Projects.astro";
 import Testimonials from "../components/Testimonials.astro";
 import Signature from "../components/Signature.astro";
 import FAQ from "../components/FAQ.astro";
+import LatestPosts from "../components/LatestPosts.astro";
 import Footer from "../components/Footer.astro";
 import { faqs } from "../data/faqs";
 
@@ -28,7 +29,7 @@ const faqSchema = {
 
 <Layout
   title="Création de site web à Amiens | Lucas Capart"
-  description="Lucas Capart conçoit des sites web sur-mesure à Amiens pour indépendants et créateurs — coachs, praticiens, artisans, entrepreneurs. Design personnalisé, performance et accompagnement continu."
+  description="Création de site web sur-mesure à Amiens pour indépendants et créateurs : coachs, praticiens, artisans. Design à votre image, dès 1 500 €. Appel offert."
 >
   <main>
     <Hero />
@@ -39,6 +40,7 @@ const faqSchema = {
     <Services />
     <Subscription />
     <Projects />
+    <LatestPosts />
     <FAQ />
 
     <!-- CTA Section -->
