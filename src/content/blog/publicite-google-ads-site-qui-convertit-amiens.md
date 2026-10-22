@@ -2,6 +2,8 @@
 title: "Google Ads : votre pub ne sert à rien si votre site ne convertit pas"
 description: "Vous payez des clics Google Ads mais peu de clients ? Le problème est souvent la page d'atterrissage. Voici ce qui fait qu'un visiteur venu d'une pub passe à l'action — ou repart."
 publishDate: 2026-09-10
+seoTitle: "Google Ads : pourquoi votre site ne convertit pas"
+services: ["strategie-digitale", "design-ux-ui-premium"]
 ---
 
 Lancer une campagne Google Ads, c'est acheter des visites. Mais une visite n'est pas un client. Entre le clic sur votre annonce et le message que vous recevez, il y a votre site — et c'est souvent là que tout se joue. J'ai vu des indépendant·e·s dépenser plusieurs centaines d'euros par mois en publicité pour un résultat décevant, alors que le vrai problème n'était pas la campagne, mais la page sur laquelle elle envoyait les gens.

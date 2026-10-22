@@ -2,6 +2,8 @@
 title: "Référencement local : comment apparaître sur Google quand on cherche votre métier à Amiens"
 description: "Fiche Google, site internet, avis clients : les leviers concrets pour qu'un·e indépendant·e à Amiens apparaisse quand quelqu'un cherche son activité sur Google, sans jargon ni promesses magiques."
 publishDate: 2026-09-30
+seoTitle: "Référencement local à Amiens : apparaître sur Google"
+services: ["seo-semantique-technique", "strategie-digitale"]
 ---
 
 Tapez votre métier suivi de « Amiens » dans Google. Est-ce que vous apparaissez ? Si la réponse est non, ou « quelque part en page 3 », vous passez à côté des client·e·s les plus faciles à convaincre : ceux qui cherchent déjà exactement ce que vous proposez, près de chez eux. Bonne nouvelle, le référencement local est beaucoup plus accessible qu'on ne le croit pour une petite activité. Voici ce qui compte vraiment.

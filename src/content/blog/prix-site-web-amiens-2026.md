@@ -2,6 +2,7 @@
 title: "Combien coûte un site web à Amiens en 2026 ?"
 description: "Un état des lieux honnête des prix d'un site internet à Amiens en 2026 : template, freelance ou agence — ce qui change vraiment le tarif, et ce qui ne devrait pas."
 publishDate: 2026-07-16
+services: ["developpement-astro-nextjs", "maintenance-evolution"]
 ---
 
 Si vous cherchez un site internet à Amiens, vous avez sans doute déjà vu des prix qui vont de 0€ (avec un créateur de site en ligne) à plusieurs dizaines de milliers d'euros (avec une grosse agence). Entre les deux, il est difficile de savoir ce qui justifie l'écart. Voici comment je vois les choses, honnêtement, même si ça ne joue pas toujours en ma faveur.
