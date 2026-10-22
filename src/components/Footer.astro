@@ -1,5 +1,6 @@
 ---
 import * as Lucide from "lucide-react";
+import { metiers } from "../data/metiers";
 const { Github, Linkedin } = Lucide;
 ---
 
@@ -29,6 +30,15 @@ const { Github, Linkedin } = Lucide;
         >
           contact@lucascapart.fr
         </a>
+        <p class="text-sm text-brand-muted font-light leading-relaxed">
+          Sites internet pour
+          {metiers.map((metier, i) => (
+            <>
+              <a href={`/site-internet/${metier.slug}/`} class="text-brand-fg/70 hover:text-brand-fg underline underline-offset-4 decoration-brand-fg/20 hover:decoration-brand-fg/50 transition-colors">{metier.label.toLowerCase()}</a>{i < metiers.length - 2 ? ", " : i === metiers.length - 2 ? " et " : ""}
+            </>
+          ))}
+          à Amiens.
+        </p>
       </div>
 
       <!-- Navigation -->

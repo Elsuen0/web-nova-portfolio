@@ -1,0 +1,24 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+import { metiers } from '../../data/metiers';
+
+export async function getStaticPaths() {
+  return metiers.map((metier) => ({
+    params: { metier: metier.slug },
+    props: { metier },
+  }));
+}
+
+const { metier } = Astro.props;
+const url = `https://lucascapart.fr/site-internet/${metier.slug}/`;
+---
+
+<ServicePage
+  item={metier}
+  url={url}
+  breadcrumb={[
+    { name: "Accueil", item: "https://lucascapart.fr/" },
+    { name: "Site vitrine sur-mesure", item: "https://lucascapart.fr/services/site-vitrine/" },
+    { name: metier.title, item: url },
+  ]}
+/>

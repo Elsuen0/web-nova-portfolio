@@ -1,0 +1,234 @@
+---
+import Layout from './Layout.astro';
+import Footer from './Footer.astro';
+import { services } from '../data/services';
+import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+
+interface Props {
+  item: any;
+  url: string;
+  breadcrumb: { name: string; item: string }[];
+}
+
+const { item, url, breadcrumb } = Astro.props;
+const Icon = item.Icon;
+const relatedServices = item.related
+  .map((slug: string) => services.find((s) => s.slug === slug))
+  .filter((s: any) => s !== undefined);
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: breadcrumb.map((crumb, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: crumb.name,
+    item: crumb.item,
+  })),
+};
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: item.h1,
+  serviceType: item.title,
+  description: item.seoDescription,
+  url,
+  provider: { "@id": "https://lucascapart.fr" },
+  areaServed: [
+    { "@type": "City", name: "Amiens" },
+    { "@type": "AdministrativeArea", name: "Somme" },
+    { "@type": "Country", name: "France" },
+  ],
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: item.faq.map((entry: { question: string; answer: string }) => ({
+    "@type": "Question",
+    name: entry.question,
+    acceptedAnswer: { "@type": "Answer", text: entry.answer },
+  })),
+};
+---
+
+<Layout title={`${item.seoTitle} | Lucas Capart`} description={item.seoDescription}>
+  <main class="relative pt-32 pb-20 px-6 overflow-hidden">
+    <!-- Decorative background -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-30 pointer-events-none">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-accent/10 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-accent/8 rounded-full blur-[80px]"></div>
+    </div>
+
+    <div class="max-w-5xl mx-auto">
+      <!-- Back button -->
+      <a href="/#services" class="inline-flex items-center gap-2 text-brand-muted hover:text-brand-fg transition-colors mb-12 group text-xs font-mono uppercase tracking-widest scroll-reveal">
+        <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+        Retour aux services
+      </a>
+
+      <!-- Header -->
+      <div class="flex flex-col md:flex-row items-start md:items-center gap-8 mb-20 scroll-reveal">
+        <div class="w-20 h-20 flex items-center justify-center rounded-md bg-brand-card border border-brand-fg/10 text-brand-accent shrink-0 shadow-2xl">
+          <Icon size={40} strokeWidth={1} />
+        </div>
+        <div>
+          <span class="text-brand-muted font-mono uppercase tracking-[0.2em] text-[10px]">{item.eyebrow}</span>
+          <h1 class="text-5xl md:text-7xl font-heading font-medium italic text-brand-fg mt-2 leading-[0.95] tracking-tight">
+            {item.h1}
+          </h1>
+        </div>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-8 space-y-20">
+
+          <section class="scroll-reveal">
+            <p class="text-2xl md:text-3xl text-brand-fg font-light leading-snug">
+              {item.lead}
+            </p>
+          </section>
+
+          <div class="h-px bg-brand-fg/8 w-full"></div>
+
+          <!-- Long-form sections -->
+          {item.sections.map((section: any) => (
+            <section class="space-y-5 scroll-reveal">
+              <h2 class="text-2xl md:text-3xl font-heading font-semibold text-brand-fg tracking-tight leading-tight">
+                {section.title}
+              </h2>
+              {section.body.map((paragraph: string) => (
+                <p class="text-base md:text-lg text-brand-muted font-light leading-relaxed">{paragraph}</p>
+              ))}
+              {section.bullets && (
+                <ul class="space-y-3 pl-5 list-disc marker:text-brand-accent">
+                  {section.bullets.map((bullet: string) => (
+                    <li class="text-base md:text-lg text-brand-muted font-light leading-relaxed">{bullet}</li>
+                  ))}
+                </ul>
+              )}
+              {section.after?.map((paragraph: string) => (
+                <p class="text-base md:text-lg text-brand-muted font-light leading-relaxed">{paragraph}</p>
+              ))}
+            </section>
+          ))}
+
+          <!-- Benefits Grid -->
+          <section class="space-y-12 scroll-reveal">
+            <h2 class="text-sm font-mono font-bold text-brand-fg uppercase tracking-[0.3em] flex items-center gap-3">
+              <span class="w-8 h-px bg-brand-fg/30"></span> Ce qui est inclus
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {item.benefits.map((benefit: string) => (
+                <div class="flex items-start gap-4 p-6 rounded-md bg-brand-card border border-brand-fg/6 hover:border-brand-accent/25 transition-colors">
+                  <CheckCircle2 size={24} className="text-brand-accent shrink-0 mt-0.5" />
+                  <span class="text-base text-brand-muted font-light leading-relaxed">{benefit}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- Process Section -->
+          <section class="space-y-12 scroll-reveal">
+            <h2 class="text-sm font-mono font-bold text-brand-fg uppercase tracking-[0.3em] flex items-center gap-3">
+              <span class="w-8 h-px bg-brand-fg/30"></span> Comment ça se passe
+            </h2>
+            <div class="space-y-4">
+              {item.process.map((step: string, i: number) => (
+                <div class="flex items-center gap-6 p-6 rounded-md bg-brand-fg/[0.02] border border-brand-fg/6 group hover:bg-brand-fg/[0.04] transition-colors">
+                  <span class="text-4xl font-heading font-medium italic text-brand-accent/25 group-hover:text-brand-accent/45 transition-colors">0{i + 1}</span>
+                  <span class="text-lg text-brand-fg font-medium tracking-tight">{step}</span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- Price -->
+          <section class="p-8 md:p-10 rounded-lg bg-brand-card border border-brand-fg/8 space-y-3 scroll-reveal">
+            <h2 class="text-sm font-mono font-bold text-brand-fg uppercase tracking-[0.3em]">Tarif</h2>
+            {item.price.from && (
+              <p class="text-3xl md:text-4xl font-heading font-semibold text-brand-fg tracking-tight">
+                À partir de <span class="text-brand-accent">{item.price.from}</span>
+              </p>
+            )}
+            <p class="text-base text-brand-muted font-light leading-relaxed">{item.price.note}</p>
+          </section>
+
+          <!-- FAQ -->
+          <section class="space-y-8 scroll-reveal">
+            <h2 class="text-2xl md:text-3xl font-heading font-semibold text-brand-fg tracking-tight leading-tight">
+              Questions fréquentes
+            </h2>
+            <div class="divide-y divide-brand-fg/8 border-y border-brand-fg/8">
+              {item.faq.map((entry: { question: string; answer: string }) => (
+                <details class="group py-6">
+                  <summary class="flex items-center justify-between gap-6 cursor-pointer list-none">
+                    <h3 class="text-base md:text-lg font-heading font-semibold text-brand-fg tracking-tight">{entry.question}</h3>
+                    <span class="shrink-0 w-7 h-7 rounded-full border border-brand-fg/15 flex items-center justify-center text-brand-fg/60 transition-transform duration-300 group-open:rotate-45">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-sm md:text-base text-brand-muted font-light leading-relaxed max-w-2xl">{entry.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
+          <!-- Related services -->
+          {relatedServices.length > 0 && (
+            <section class="space-y-6 scroll-reveal">
+              <h2 class="text-sm font-mono font-bold text-brand-fg uppercase tracking-[0.3em] flex items-center gap-3">
+                <span class="w-8 h-px bg-brand-fg/30"></span> Voir aussi
+              </h2>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {relatedServices.map((related: any) => (
+                  <a
+                    href={`/services/${related.slug}/`}
+                    class="block p-6 rounded-lg bg-brand-card border border-brand-fg/6 hover:border-brand-accent/30 transition-colors"
+                  >
+                    <span class="block text-lg font-heading font-semibold text-brand-fg tracking-tight">{related.title}</span>
+                    <span class="block mt-2 text-sm text-brand-muted font-light leading-relaxed">{related.description}</span>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+
+        <!-- Sidebar / Contact -->
+        <div class="lg:col-span-4">
+          <div class="p-10 rounded-lg bg-brand-card border border-brand-fg/10 sticky top-32 shadow-3xl scroll-reveal">
+            <h3 class="text-xl font-heading font-semibold text-brand-fg mb-6 tracking-tight leading-tight">Parlons de<br/>votre projet</h3>
+            <p class="text-sm text-brand-muted font-light mb-10 leading-relaxed">
+              Un premier appel de 30 minutes, gratuit et sans engagement, pour comprendre votre activité et ce dont vous avez vraiment besoin.
+            </p>
+            <a href="https://calendly.com/lucascapartpro/30min" target="_blank" rel="noopener noreferrer" class="block w-full py-5 bg-brand-fg text-brand-bg rounded-full font-bold text-sm text-center transform hover:scale-[1.03] active:scale-[0.97] transition-all shadow-xl">
+              Réserver un appel gratuit
+            </a>
+            <p class="mt-5 text-center text-[10px] font-mono text-brand-muted uppercase tracking-widest">
+              Ou par mail :
+              <a href="mailto:contact@lucascapart.fr" class="text-brand-fg underline underline-offset-4 decoration-brand-fg/30 hover:decoration-brand-fg transition-colors">contact@lucascapart.fr</a>
+            </p>
+            <div class="mt-8 pt-8 border-t border-brand-fg/8 flex flex-col gap-4">
+              <div class="flex items-center gap-3 text-brand-muted/60">
+                 <div class="w-2 h-2 rounded-full bg-green-600"></div>
+                 <span class="text-[10px] font-mono uppercase tracking-widest">Basé à Amiens · partout en France</span>
+              </div>
+              <p class="text-[9px] text-brand-muted/40 font-mono uppercase tracking-[0.2em]">Réponse garantie sous 24 heures</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <Footer />
+</Layout>
