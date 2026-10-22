@@ -2,6 +2,8 @@
 title: "Instagram ne suffit pas : pourquoi votre activité à Amiens a besoin d'un vrai site"
 description: "Coach, praticienne, artisane à Amiens : voici pourquoi compter uniquement sur Instagram pour votre activité est risqué, et ce qu'un site internet change concrètement."
 publishDate: 2026-07-16
+seoTitle: "Instagram ou site internet ? Le bon choix à Amiens"
+services: ["developpement-astro-nextjs", "seo-semantique-technique"]
 ---
 
 C'est une question que j'entends souvent : "J'ai déjà Instagram, est-ce que j'ai vraiment besoin d'un site ?" La réponse courte est oui, et voici pourquoi, sans jargon marketing.
