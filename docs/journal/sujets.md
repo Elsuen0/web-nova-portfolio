@@ -6,7 +6,7 @@ Pour ajouter un sujet, ajouter une ligne au tableau. Pour changer l'ordre, dépl
 
 | # | Sujet | Requête principale | Liens internes conseillés | Statut |
 |---|---|---|---|---|
-| 1 | Refaire son site sans perdre son référencement Google | refonte site internet référencement | /services/refonte-site-internet/, /services/seo-semantique-technique/ | à écrire |
+| 1 | Refaire son site sans perdre son référencement Google | refonte site internet référencement | /services/refonte-site-internet/, /services/seo-semantique-technique/ | brouillon (PR) |
 | 2 | Comment obtenir des avis Google quand on est indépendant à Amiens | obtenir des avis Google | /services/seo-semantique-technique/, /blog/referencement-local-amiens-apparaitre-sur-google/ | à écrire |
 | 3 | Freelance ou agence web à Amiens : que choisir ? | freelance ou agence web | /services/site-vitrine/, /blog/prix-site-web-amiens-2026/ | à écrire |
 | 4 | Wix, WordPress ou site sur-mesure : que choisir en 2026 ? | Wix ou site sur-mesure | /services/site-vitrine/, /services/developpement-astro-nextjs/ | à écrire |
